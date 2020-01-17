@@ -2,6 +2,14 @@
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
+
+## EPGMr Installation
+
+```
+install.packages("devtools");# if you do not have it installed on your PC
+devtools::install_github("SwampThingPaul/EPGMr")
+```
+
 ***
 ## From the Original EPGM development developed by [Walker and Kadlec (1996)](http://www.wwwalker.net/epgm/).
 ### Abstract:
