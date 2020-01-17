@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1579274154941.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3609112045",
+    "id" : "6398F96C",
+    "lastKnownWriteTime" : 1579281015,
+    "last_content_update" : 1579281015356,
+    "path" : "D:/_GitHub/EPGMr/R/casedat.R",
+    "project_path" : "R/casedat.R",
+    "properties" : {
+        "cursorPosition" : "23,4",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

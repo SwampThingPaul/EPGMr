@@ -1,0 +1,12 @@
+Package: EPGMr
+Type: Package
+Title: Implements the Everglades Phosphorus Gradient Model in R
+Version: 0.1.0
+Authors@R: person("Paul","Julian",email="pauljulianphd@gmail.com",role=c("aut","cre"))
+Maintainer: Paul Julian <pauljulianphd@gmail.com>
+URL: https://github.com/swampthingpaul/EPGMr
+Description: The model used for Stormwater Treatment Area (STA) design is expanded to include mass balances on marsh water-columns and surface soils. EPGM (Everglades Phosphorus Gradient Model) predicts variations in water-column P concentration, peat accretion rate, and soil P concentration along a horizontal gradient imposed by an external phosphorus load and sheet-flow conditions. Potential biological responses are expressed in terms of marsh surface area exceeding threshold criteria for water-column and soil phosphorus concentrations. More information of the model can be found at http://www.wwwalker.net/epgm/
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1.9000
