@@ -5,7 +5,7 @@
 #' As described in the original documentation, the model is designed to simulate marsh enrichment (responses to increasing P load), not recovery (responses to decreasing in load).
 #'
 #'
-#' @param case.no Case number from the pre-loaded example data
+#' @param case.no Case number from the pre-loaded example data (values ranges from 1 to 12)
 #' @param Start.Discharge The year of discharge started
 #' @param Start.Discharge The year which this particular STA began discharge operations.
 #' @param STA.outflow.TPconc Outflow total phosphorus concentration (in ug L^{-1}) for this STA.
@@ -58,6 +58,24 @@ Max.Dist=15,
 Dist.increment.km=0.1,
 plot.profile=TRUE
 ){
+
+  ## Stop/warning section of the function
+  input.val.na<-sum(c(is.na(Start.Discharge),is.na(STA.outflow.TPconc),is.na(STA.outflow.vol),is.na(FlowPath.width),
+                     is.na(Hydroperiod),is.na(Soil.Depth),is.na(Soil.BulkDensity.inital),is.na(Soil.TPConc.inital),
+                     is.na(Vertical.SoilTPGradient.inital),is.na(Soil.BulkDensity.final),is.na(PSettlingRate),
+                     is.na(P.AtmoDep),is.na(ET)))
+
+  if(is.na(case.no)==T & input.val.na>1){
+    stop("Missing inputs, either input a 'case.no' or all individual model parameters.")
+  }
+  if(case.no>12){
+    stop("'case.no' range from 1 to 12.")
+  }
+  if(Dist.increment.km>Max.Dist){
+    stop("Distance increment is greater than the maximum gradient distance.")
+  }
+
+  ## Data handling
   if(is.na(case.no)==F){
     data(casedat)
     cases.dat=casedat}
@@ -94,10 +112,11 @@ plot.profile=TRUE
     ET.myr<-cases.dat[cases.dat$case.number==case.no,"ET"]
   }
 
+  ## Default values based on empirical studies
   SoilP_Accret.slope<-1.467
   SoilP_Accret.int<-462.8865
-  spread.mgkg<-144.05071892624
-  midpoint.mgkg<-1034.4142631602
+  spread.mgkg<-if(soil.z.cm==10){144.05071892624}else{727.675986572509}
+  midpoint.mgkg<-if(soil.z.cm==10){1034.4142631602}else{71.2079211802927}
 
   maxdist.km<-min(c(50,Max.Dist),na.rm=T)
 
@@ -105,7 +124,7 @@ plot.profile=TRUE
   vol.soilP.mgcm3<-(soilP.i.mgkg*bd.i.gcc/1000)
   cattail.i.per<-1/(1+exp(-(soilP.i.mgkg-midpoint.mgkg)/spread.mgkg))*100
 
-  b.myr<-RF.myr-ET.myr;# B Atmospheric Water Balance
+  b.myr<-RF.myr-ET.myr;
   Rinflow.myr<-Psettle.myr*hydroperiod.per+b.myr
   CbInflow.ugL<-atmoP.mgm2yr/Rinflow.myr
   Rss.myr<-Psettle.myr*hydroperiod.per+b.myr
