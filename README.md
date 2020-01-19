@@ -12,7 +12,7 @@ described in:
   - Walker WW, Kadlec, R.H. (1996) A Model for Simulating Phosphorus
     Concentrations in Waters and Soils Downstream of Everglades
     Stormwater Treatment Areas. U.S. Department of the Interior.
-    [Report](http://www.wwwalker.net/epgm/epgm_Aug_1996_1_of_2.pdf)
+    [Report](http://www.wwwalker.net/epgm/epgm_Aug_1996_1_of_2.pdf),
     [Appendix](http://www.wwwalker.net/epgm/epgm_Aug_1996_2_of_2.pdf).
 
 The model is further described in:
