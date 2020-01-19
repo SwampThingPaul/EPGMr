@@ -214,6 +214,7 @@ plot.profile=TRUE
                           R.int.myr=R.int.myr,
                           Cb.int.ugL=Cb.int.ugL,
                           TP.int.ugL=TP.int.ugL,
+                          Soil.accret.cmyr=Soil.accret.cmyr,
                           P.accret.mgm2yr=P.accret.mgm2yr,
                           NewSoilP.mgkg=NewSoilP.mgkg,
                           EquilTime.yrs=EquilTime.yrs,
