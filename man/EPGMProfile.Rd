@@ -11,10 +11,10 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
   Soil.BulkDensity.final = NA, PSettlingRate = NA, P.AtmoDep = NA,
   Rainfall = NA, ET = NA, Dist.Display = 12, Yr.Display = 30,
   Max.Yrs = 200, Max.Dist = 15, Dist.increment.km = 0.1,
-  plot.profile = TRUE)
+  plot.profile = TRUE, raw.output = FALSE)
 }
 \arguments{
-\item{case.no}{Case number from the pre-loaded example data}
+\item{case.no}{Case number from the pre-loaded example data (values ranges from 1 to 12)}
 
 \item{Start.Discharge}{The year of discharge started}
 

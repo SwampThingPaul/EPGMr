@@ -56,7 +56,8 @@ Yr.Display=30,
 Max.Yrs=200,
 Max.Dist=15,
 Dist.increment.km=0.1,
-plot.profile=TRUE
+plot.profile=TRUE,
+raw.output=FALSE
 ){
 
   ## Stop/warning section of the function
@@ -264,5 +265,5 @@ plot.profile=TRUE
 
   }
 
-  return(profile.dat)
+  if(raw.output==TRUE){return(profile.dat)}
 }
