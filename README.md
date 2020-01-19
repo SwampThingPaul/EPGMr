@@ -5,6 +5,29 @@ EPGMr
 
 -----
 
+This package is an R-version of the original Everglades Phosphorus
+Gradient Model developed by Walker and Kadlec and implements the model
+described in:
+
+  - Walker WW, Kadlec, R.H. (1996) A Model for Simulating Phosphorus
+    Concentrations in Waters and Soils Downstream of Everglades
+    Stormwater Treatment Areas. U.S. Department of the Interior.
+    [Report](http://www.wwwalker.net/epgm/epgm_Aug_1996_1_of_2.pdf)
+    [Appendix](http://www.wwwalker.net/epgm/epgm_Aug_1996_2_of_2.pdf).
+
+The model is further described in:
+
+  - Kadlec RH, Walker WW (1999) Management models to evaluate phosphorus
+    impacts on wetlands. In: Reddy KR, O’Conner GA, Schelske CL (eds)
+    Phosphorus Biogeochemistry in Subtropical Ecosystems. Lewis
+    Publishers, Boca Raton, FL, pp 621–639
+
+  - Walker WW, Kadlec RH (2011) Modeling Phosphorus Dynamics in
+    Everglades Wetlands and Stormwater Treatment Areas. Critical Reviews
+    in Environmental Science and Technology 41:430–446.
+
+-----
+
 ## From the Original EPGM documentation developed by [Walker and Kadlec (1996)](http://www.wwwalker.net/epgm/).
 
 ### Synopsis:
@@ -45,9 +68,11 @@ devtools::install_github("SwampThingPaul/EPGMr")
 
 ## Functions
 
+This will run the example case number 11 and plot the distance profile
+depicited below.
+
 ``` r
 EPGMProfile(case.no=11,plot.profile=T)
-# This will run the example case number 11 and plot the distance profile depicited below.
 ```
 
 <img src="README_files/figure-gfm/distance profile plot-1.png" title="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." alt="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." style="display: block; margin: auto;" />

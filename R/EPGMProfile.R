@@ -143,7 +143,7 @@ raw.output=FALSE
   Current.Ke<-Psettle.myr+(Psettle.myr-Psettle.myr)*exp(-Yr.Display*Ke.relax.perYr)
   aa<-Psettle.myr
   bb<-Psettle.myr-Psettle.myr
-  CumAvg.Ke.myr<-(aa*Yr.Display+bb/Ke.relax.perYr*(1-exp(-Ke.relax.perYr*Yr.Display)))/Yr.Display
+  CumAvg.Ke.myr<-if(Yr.Display==0){Psettle.myr}else{(aa*Yr.Display+bb/Ke.relax.perYr*(1-exp(-Ke.relax.perYr*Yr.Display)))/Yr.Display}
 
   ## Profile Calc
   dist.seq<-seq(0,maxdist.km,Dist.increment.km)
@@ -151,10 +151,10 @@ raw.output=FALSE
 
   #Steady State
   q.seq<-b.myr*area.seq+outflow.q.kacft*43560*0.001/3.28^3
-  TP.SS<-outflow.c.ugL
+  TP.SS<-if(Yr.Display==0){Cbss.ugL}else{outflow.c.ugL}
 
   for(i in 2:length(dist.seq)){
-    TP.SS[i]<-Cbss.ugL+(TP.SS[i-1]-Cbss.ugL)*if(b.myr==0){exp(-Psettle.myr*hydroperiod.per*(area.seq[i]-area.seq[i-1])/q.seq[i])}else{(q.seq[i]/q.seq[i-1])^(-Rss.myr/b.myr)}
+    TP.SS[i]<-if(Yr.Display==0){Cbss.ugL}else{Cbss.ugL+(TP.SS[i-1]-Cbss.ugL)*if(b.myr==0){exp(-Psettle.myr*hydroperiod.per*(area.seq[i]-area.seq[i-1])/q.seq[i])}else{(q.seq[i]/q.seq[i-1])^(-Rss.myr/b.myr)}}
   }
   SoilP.SS<-SoilP_Accret.int+SoilP_Accret.slope*Psettle.myr*hydroperiod.per*TP.SS
   SSTime.yrs<-10*bd.f.gcc*soil.z.cm*SoilP.SS/(Psettle.myr*hydroperiod.per*TP.SS)
@@ -164,20 +164,20 @@ raw.output=FALSE
   Ke.myr<-Psettle.myr
   R.myr<-Ke.myr*hydroperiod.per+b.myr
   Cb.ugL<-atmoP.mgm2yr/R.myr
-  TP.Time.ugL<-outflow.c.ugL
+  TP.Time.ugL<-if(Yr.Display==0){Cbss.ugL}else{outflow.c.ugL}
 
   for(i in 2:length(dist.seq)){
     Ke.myr[i]<-Psettle.myr+max(c(0,(Ke.myr[i-1]-Psettle.myr)*(TP.Time.ugL[i-1]-Cbss.ugL+Chalf.ugL)))
     R.myr[i]<-Ke.myr[i]*hydroperiod.per+b.myr
     Cb.ugL[i]<-atmoP.mgm2yr/R.myr[i]
-    TP.Time.ugL[i]<-Cb.ugL[i]+(TP.Time.ugL[i-1]-Cb.ugL[i])*if(b.myr==0){exp(-hydroperiod.per*Ke.myr[i]*(area.seq[i]-area.seq[i-1])/q.seq[i])}else{(q.seq[i]/q.seq[i-1])^(-R.myr[i]/b.myr)}
+    TP.Time.ugL[i]<-if(Yr.Display==0){Cbss.ugL}else{Cb.ugL[i]+(TP.Time.ugL[i-1]-Cb.ugL[i])*if(b.myr==0){exp(-hydroperiod.per*Ke.myr[i]*(area.seq[i]-area.seq[i-1])/q.seq[i])}else{(q.seq[i]/q.seq[i-1])^(-R.myr[i]/b.myr)}}
   }
 
   #Integration
   Ke.int.myr<-CumAvg.Ke.myr
   R.int.myr<-Ke.int.myr*hydroperiod.per+b.myr
   Cb.int.ugL<-atmoP.mgm2yr/R.int.myr
-  TP.int.ugL<-outflow.c.ugL
+  TP.int.ugL<-if(Yr.Display==0){Cbss.ugL}else{outflow.c.ugL}
   for(i in 2:length(dist.seq)){
     Ke.int.myr[i]<-Psettle.myr+max(c(0,(Ke.int.myr[i-1]-Psettle.myr)*(TP.int.ugL[i-1]-Cbss.ugL+Chalf.ugL)))
     R.int.myr[i]<-Ke.int.myr[i]*hydroperiod.per+b.myr
