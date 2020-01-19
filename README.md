@@ -24,7 +24,7 @@ install.packages("devtools");# if you do not have it installed on your PC
 devtools::install_github("SwampThingPaul/EPGMr")
 ```
 
-### Functions
+## Functions
 
 ```
 EPGMProfile(case.no=11,plot.profile=T)
@@ -32,4 +32,4 @@ EPGMProfile(case.no=11,plot.profile=T)
 
 ```
 
-<img src="./case_11.png" align="center" width="70%"/>
+<img src="case11_profile.png" align="center" width="70%"/>
