@@ -69,12 +69,16 @@ devtools::install_github("SwampThingPaul/EPGMr")
 ## Functions
 
 This will run the example case number 11, plot the distance profile
-depicited below and provide a results table. If `raw.output` was set to
-`TRUE`, the raw data behind the plots and summary tables would be
-printed in the console. The results output table under
-`$DistanceProfile` provides a summary of the simulation period at
-several user input distances, however the default argument in the
-function is `summary.distance=c(0,0.5,1,2,4,8,10)`
+depicited below and provide a summary results table. If `raw.output` was
+set to `TRUE`, the raw data behind the plots and summary tables would be
+printed in the console. If `results.table` was set to `TRUE` then a
+summary results table will be printed (default). The results output
+table under `$DistanceProfile` provides a summary of the simulation
+period at several user input distances, however the default argument in
+the function is `summary.distance=c(0,0.5,1,2,4,8,10)`. Other
+information in the summary result tab include, simulation inputs, water
+budget, phosphorus mass balance and information on regarding soils for
+the simulation period (default is 30 years).
 
 ``` r
 EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,8,10))

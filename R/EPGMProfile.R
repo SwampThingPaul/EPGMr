@@ -27,7 +27,8 @@
 #' @param Max.Dist Maximum ditance plotted, default is 50 km
 #' @param Dist.increment.km Distance increment modeled
 #' @param plot.profile If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.
-#' @param raw.output If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters. If \code{FALSE} a summary results table will print.
+#' @param raw.output If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.
+#' @param results.table if \code{TRUE} summary results table will be printed in the console. Default is set to \code{TRUE}.
 #' @param summary.distance Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.
 #' @keywords "water quality"
 #' @export
@@ -59,6 +60,7 @@ Max.Dist=15,
 Dist.increment.km=0.1,
 plot.profile=TRUE,
 raw.output=FALSE,
+results.table=TRUE,
 summary.distance=c(0,0.5,1,2,4,8,10)
 ){
 
@@ -76,6 +78,9 @@ summary.distance=c(0,0.5,1,2,4,8,10)
   }
   if(Dist.increment.km>Max.Dist){
     stop("Distance increment is greater than the maximum gradient distance.")
+  }
+  if(results.table==T &is.na(summary.distance)){
+    stop("Distance values for summary table empty, please input data.")
   }
 
   ## Data handling
@@ -272,7 +277,7 @@ summary.distance=c(0,0.5,1,2,4,8,10)
   summary.distance<-summary.distance[summary.distance<Max.Dist]
 
   # Simulation information
-  sim.zone<-data.frame(Parameter=c("Distance","Width","Area","STA.outflow.volume","Hydroperiod","Soil.Depth","P.Settle.Rate","STA.outflow.Conc","STA.outflow.Load"),
+  sim.zone<-data.frame(Parameter=c("Distance.km","Width.km","Area.km2","STA.outflow.volume.kAcftyr","Hydroperiod.pct","Soil.Depth.cm","P.Settle.Rate.myr","STA.outflow.Conc.ugL","STA.outflow.Load.mtyr"),
                        Value=c(max(profile.dat$dist,na.rm=T),
                                path.width.km,round(max(profile.dat$dist,na.rm=T)*path.width.km,2),
                                outflow.q.kacft,
@@ -282,14 +287,14 @@ summary.distance=c(0,0.5,1,2,4,8,10)
                                outflow.c.ugL,
                                round((outflow.q.kacft*43560*0.001/3.28^3)*outflow.c.ugL/1000,1)))
   #Distance Profile
-  DistanceProfile<-rbind(t(data.frame(WaterCol.Pconc=round(profile.dat[profile.dat$dist%in%summary.distance,"TP.Time.ugL"],1))),
-                         t(data.frame(SteadyState.WC.Conc=round(profile.dat[profile.dat$dist%in%summary.distance,"TP.SS.ugL"],1))),
-                         t(data.frame(SteadyState.Soil.Conc=round(profile.dat[profile.dat$dist%in%summary.distance,"SoilP.SS.mgkg"],0))),
-                         t(data.frame(Time.to.Steady.State=round(profile.dat[profile.dat$dist%in%summary.distance,"SSTime.yrs"],1))),
-                         t(data.frame(NewSoil.Depth=round(profile.dat[profile.dat$dist%in%summary.distance,"NewSoil.z.cm"],1))),
-                         t(data.frame(Soil.Mass.Accret=round(profile.dat[profile.dat$dist%in%summary.distance,"Soil.accret.cmyr"],2))),
-                         t(data.frame(Cattail.Density=round(profile.dat[profile.dat$dist%in%summary.distance,"cattail.time.per"],0))),
-                         t(data.frame(SteadyState.Cattail.Density=round(profile.dat[profile.dat$dist%in%summary.distance,"cattail.density.SS.per"],0)))
+  DistanceProfile<-rbind(t(data.frame(WaterCol.Pconc.ugL=round(profile.dat[profile.dat$dist%in%summary.distance,"TP.Time.ugL"],1))),
+                         t(data.frame(SteadyState.WC.Conc.ugL=round(profile.dat[profile.dat$dist%in%summary.distance,"TP.SS.ugL"],1))),
+                         t(data.frame(SteadyState.Soil.Conc.mgkg=round(profile.dat[profile.dat$dist%in%summary.distance,"SoilP.SS.mgkg"],0))),
+                         t(data.frame(Time.to.Steady.State.yrs=round(profile.dat[profile.dat$dist%in%summary.distance,"SSTime.yrs"],1))),
+                         t(data.frame(NewSoil.Depth.cm=round(profile.dat[profile.dat$dist%in%summary.distance,"NewSoil.z.cm"],1))),
+                         t(data.frame(Soil.Mass.Accret.kgm2yr=round(profile.dat[profile.dat$dist%in%summary.distance,"Soil.accret.cmyr"],2))),
+                         t(data.frame(Cattail.Density.pct=round(profile.dat[profile.dat$dist%in%summary.distance,"cattail.time.per"],0))),
+                         t(data.frame(SteadyState.Cattail.Density.pct=round(profile.dat[profile.dat$dist%in%summary.distance,"cattail.density.SS.per"],0)))
   )
   colnames(DistanceProfile)<-c(summary.distance)
 
@@ -300,7 +305,7 @@ summary.distance=c(0,0.5,1,2,4,8,10)
   Flow.hm3<-data.frame(Total.Flow.hm3=round(Flow.m[,1]*TArea.km2,0))
   Flow.myr<-data.frame(Sim.Avg.Flow.myr=if(Yr.Display==0){NA}else{Flow.m[,1]/Yr.Display})
 
-  Water.Budget<-cbind(Flow.m,Flow.hm3,Flow.myr)
+  Water.Budget<-cbind(Flow.m,Flow.hm3,round(Flow.myr,2))
   rownames(Water.Budget)<-c("Inflow","Rainfall","ET","Outflow")
 
   #
@@ -362,5 +367,7 @@ summary.distance=c(0,0.5,1,2,4,8,10)
                 "Soils"=soils)
 
 
-  if(raw.output==TRUE){return(profile.dat)}else{out.sum}
+  if(raw.output==TRUE){return(profile.dat)}
+  if(results.table==TRUE){return(out.sum)}
 }
+#
