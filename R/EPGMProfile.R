@@ -69,8 +69,8 @@ summary.distance=c(0,0.5,1,2,4,8,10)
                      is.na(Hydroperiod),is.na(Soil.Depth),is.na(Soil.BulkDensity.inital),is.na(Soil.TPConc.inital),
                      is.na(Vertical.SoilTPGradient.inital),is.na(Soil.BulkDensity.final),is.na(PSettlingRate),
                      is.na(P.AtmoDep),is.na(ET)))
-
-  if(is.na(case.no)==T & input.val.na>1){
+  summary.distance<-summary.distance
+  if(is.na(case.no)==TRUE & input.val.na>1){
     stop("Missing inputs, either input a 'case.no' or all individual model parameters.")
   }
   if(case.no>12){
@@ -79,8 +79,15 @@ summary.distance=c(0,0.5,1,2,4,8,10)
   if(Dist.increment.km>Max.Dist){
     stop("Distance increment is greater than the maximum gradient distance.")
   }
-  if(results.table==T &is.na(summary.distance)){
+  if(results.table==TRUE & (sum(is.na(summary.distance))>0)==TRUE){
     stop("Distance values for summary table empty, please input data.")
+  }
+  if(min(summary.distance)<0){
+    stop("Distance values much be equal to or greater than zero")
+  }
+  if(raw.output==TRUE&results.table==TRUE){
+    warning("Can have raw.output and results.table, You can't have your cake and eat it too.")
+    raw.output=FALSE
   }
 
   ## Data handling
@@ -273,15 +280,17 @@ summary.distance=c(0,0.5,1,2,4,8,10)
 
   }
 
+  if(results.table==TRUE){
   # Results Report
   summary.distance<-summary.distance[summary.distance<Max.Dist]
 
   # Simulation information
   sim.zone<-data.frame(Parameter=c("Distance.km","Width.km","Area.km2","STA.outflow.volume.kAcftyr","Hydroperiod.pct","Soil.Depth.cm","P.Settle.Rate.myr","STA.outflow.Conc.ugL","STA.outflow.Load.mtyr"),
                        Value=c(max(profile.dat$dist,na.rm=T),
-                               path.width.km,round(max(profile.dat$dist,na.rm=T)*path.width.km,2),
+                               path.width.km,
+                               round(max(profile.dat$dist,na.rm=T)*path.width.km,2),
                                outflow.q.kacft,
-                               hydroperiod.per,
+                               hydroperiod.per*100,
                                soil.z.cm,
                                Psettle.myr,
                                outflow.c.ugL,
@@ -365,7 +374,7 @@ summary.distance=c(0,0.5,1,2,4,8,10)
                 "Water.Budget"=Water.Budget,
                 "P.MassBalance"=P.Budget,
                 "Soils"=soils)
-
+}
 
   if(raw.output==TRUE){return(profile.dat)}
   if(results.table==TRUE){return(out.sum)}

@@ -11,7 +11,8 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
   Soil.BulkDensity.final = NA, PSettlingRate = NA, P.AtmoDep = NA,
   Rainfall = NA, ET = NA, Yr.Display = 30, Max.Yrs = 200,
   Max.Dist = 15, Dist.increment.km = 0.1, plot.profile = TRUE,
-  raw.output = FALSE, summary.distance = c(0, 0.5, 1, 2, 4, 8, 10))
+  raw.output = FALSE, results.table = TRUE, summary.distance = c(0,
+  0.5, 1, 2, 4, 8, 10))
 }
 \arguments{
 \item{case.no}{Case number from the pre-loaded example data (values ranges from 1 to 12)}
@@ -48,7 +49,9 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 
 \item{plot.profile}{If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.}
 
-\item{raw.output}{If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters. If \code{FALSE} a summary results table will print.}
+\item{raw.output}{If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.}
+
+\item{results.table}{if \code{TRUE} summary results table will be printed in the console. Default is set to \code{TRUE}.}
 
 \item{summary.distance}{Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.}
 

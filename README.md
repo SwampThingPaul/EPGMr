@@ -81,7 +81,7 @@ budget, phosphorus mass balance and information on regarding soils for
 the simulation period (default is 30 years).
 
 ``` r
-EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,8,10))
+EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,10))
 ```
 
 <img src="README_files/figure-gfm/distance profile plot-1.png" title="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." alt="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." style="display: block; margin: auto;" />
@@ -90,34 +90,34 @@ EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,8,10))
     ## [1] 30
     ## 
     ## $Simulated.Zone
-    ##            Parameter   Value
-    ## 1           Distance  15.000
-    ## 2              Width  10.500
-    ## 3               Area 157.500
-    ## 4 STA.outflow.volume 281.300
-    ## 5        Hydroperiod   0.914
-    ## 6         Soil.Depth  10.000
-    ## 7      P.Settle.Rate  10.200
-    ## 8   STA.outflow.Conc 122.000
-    ## 9   STA.outflow.Load  42.400
+    ##                    Parameter Value
+    ## 1                Distance.km  15.0
+    ## 2                   Width.km  10.5
+    ## 3                   Area.km2 157.5
+    ## 4 STA.outflow.volume.kAcftyr 281.3
+    ## 5            Hydroperiod.pct  91.4
+    ## 6              Soil.Depth.cm  10.0
+    ## 7          P.Settle.Rate.myr  10.2
+    ## 8       STA.outflow.Conc.ugL 122.0
+    ## 9      STA.outflow.Load.mtyr  42.4
     ## 
     ## $DistanceProfile
-    ##                                   0       1       2       4      8     10
-    ## WaterCol.Pconc               122.00   93.70   72.10   43.10  16.90  11.50
-    ## SteadyState.WC.Conc          122.00   93.70   72.10   43.10  16.90  11.50
-    ## SteadyState.Soil.Conc       2131.00 1744.00 1449.00 1053.00 694.00 620.00
-    ## Time.to.Steady.State          15.00   16.00   17.20   20.90  35.20  46.30
-    ## NewSoil.Depth                 10.00   10.00   10.00   10.00   8.50   6.50
-    ## Soil.Mass.Accret               0.67    0.63    0.58    0.48   0.28   0.22
-    ## Cattail.Density              100.00   99.00   95.00   53.00   5.00   2.00
-    ## SteadyState.Cattail.Density  100.00   99.00   95.00   53.00   9.00   5.00
+    ##                                       0       1       2       4     10
+    ## WaterCol.Pconc.ugL               122.00   93.70   72.10   43.10  11.50
+    ## SteadyState.WC.Conc.ugL          122.00   93.70   72.10   43.10  11.50
+    ## SteadyState.Soil.Conc.mgkg      2131.00 1744.00 1449.00 1053.00 620.00
+    ## Time.to.Steady.State.yrs          15.00   16.00   17.20   20.90  46.30
+    ## NewSoil.Depth.cm                  10.00   10.00   10.00   10.00   6.50
+    ## Soil.Mass.Accret.kgm2yr            0.67    0.63    0.58    0.48   0.22
+    ## Cattail.Density.pct              100.00   99.00   95.00   53.00   2.00
+    ## SteadyState.Cattail.Density.pct  100.00   99.00   95.00   53.00   5.00
     ## 
     ## $Water.Budget
     ##          Total.Flow.m Total.Flow.hm3 Sim.Avg.Flow.myr
-    ## Inflow          66.14          10417         2.204667
-    ## Rainfall        34.80           5481         1.160000
-    ## ET              41.40           6520         1.380000
-    ## Outflow         59.54           9378         1.984667
+    ## Inflow          66.14          10417             2.20
+    ## Rainfall        34.80           5481             1.16
+    ## ET              41.40           6520             1.38
+    ## Outflow         59.54           9378             1.98
     ## 
     ## $P.MassBalance
     ##          PMass.mgm2 PMass.mtons Sim.Avg.Load.mgm2yr
