@@ -27,6 +27,8 @@
 #' @param Max.Dist Maximum ditance plotted, default is 50 km
 #' @param Dist.increment.km Distance increment modeled
 #' @param plot.profile If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.
+#' @param raw.output If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters. If \code{FALSE} a summary results table will print.
+#' @param summary.distance Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.
 #' @keywords "water quality"
 #' @export
 #' @return This function comuptes and plots the distance profile based on input values
@@ -51,13 +53,13 @@ PSettlingRate=NA,
 P.AtmoDep=NA,
 Rainfall=NA,
 ET=NA,
-Dist.Display=12,
 Yr.Display=30,
 Max.Yrs=200,
 Max.Dist=15,
 Dist.increment.km=0.1,
 plot.profile=TRUE,
-raw.output=FALSE
+raw.output=FALSE,
+summary.distance=c(0,0.5,1,2,4,8,10)
 ){
 
   ## Stop/warning section of the function
@@ -158,7 +160,7 @@ raw.output=FALSE
   }
   SoilP.SS<-SoilP_Accret.int+SoilP_Accret.slope*Psettle.myr*hydroperiod.per*TP.SS
   SSTime.yrs<-10*bd.f.gcc*soil.z.cm*SoilP.SS/(Psettle.myr*hydroperiod.per*TP.SS)
-  cattail.per<-(1/(1+exp(-(SoilP.SS-midpoint.mgkg)/spread.mgkg)))*100
+  cattail.SS.per<-(1/(1+exp(-(SoilP.SS-midpoint.mgkg)/spread.mgkg)))*100
 
   #Current Time
   Ke.myr<-Psettle.myr
@@ -188,14 +190,14 @@ raw.output=FALSE
   NewSoilP.mgkg<-SoilP_Accret.int*Ke.int.myr/Psettle.myr+SoilP_Accret.slope*P.accret.mgm2yr
   Soil.accret.kgm2yr<-P.accret.mgm2yr/NewSoilP.mgkg
   Soil.accret.cmyr<-Soil.accret.kgm2yr/(10*bd.f.gcc)
-  NewSoil.z.cm<-pmin(soil.z.cm,c(soil.z.cm,Soil.accret.cmyr*Yr.Display))
+  NewSoil.z.cm<-pmin(soil.z.cm,c(Soil.accret.cmyr*Yr.Display))
   EquilTime.yrs<-soil.z.cm/Soil.accret.cmyr
   SoilMass.kgm2<-ifelse(Yr.Display<EquilTime.yrs,10*soil.z.cm*bd.i.gcc+Soil.accret.kgm2yr*(1-bd.i.gcc/bd.f.gcc)*Yr.Display,Me.kgm2)
   BulkDensity.gcc<-SoilMass.kgm2/10/soil.z.cm
 
   coef1<-P.accret.mgm2yr-10000*Soil.accret.cmyr*(vol.soilP.mgcm3+soilPgrad.i.mgcccm*soil.z.cm/2)
   coef2<-10000*Soil.accret.cmyr^2*soilPgrad.i.mgcccm/2
-  Avg.SoilP.mgkg<-ifelse(Yr.Display>EquilTime.yrs,NewSoilP.mgkg,(Me.kgm2*soilP.i.mgkg+coef1*Yr.Display+coef2*Yr.Display^2)/SoilMass.kgm2)
+  Avg.SoilP.mgkg<-ifelse(Yr.Display>EquilTime.yrs,NewSoilP.mgkg,(Mi.kgm2*soilP.i.mgkg+coef1*Yr.Display+coef2*Yr.Display^2)/SoilMass.kgm2)
   Avg.SoilP.mgcm3<-Avg.SoilP.mgkg*BulkDensity.gcc/1000
   B.SoilP.mgcm3<-pmax(0,c(ifelse(NewSoil.z.cm>=soil.z.cm,Avg.SoilP.mgcm3,vol.soilP.mgcm3-soilPgrad.i.mgcccm*(NewSoil.z.cm-soil.z.cm/2))))
   cattail.time.per<-1/(1+exp(-(Avg.SoilP.mgkg-midpoint.mgkg)/spread.mgkg))*100
@@ -206,7 +208,7 @@ raw.output=FALSE
                           TP.SS.ugL=TP.SS,
                           SoilP.SS.mgkg=SoilP.SS,
                           SSTime.yrs=SSTime.yrs,
-                          cattail.density.per=cattail.per,
+                          cattail.density.SS.per=cattail.SS.per,
                           Ke.myr=Ke.myr,
                           R.myr=R.myr,
                           Cb.ugL=Cb.ugL,
@@ -218,6 +220,7 @@ raw.output=FALSE
                           Soil.accret.cmyr=Soil.accret.cmyr,
                           P.accret.mgm2yr=P.accret.mgm2yr,
                           NewSoilP.mgkg=NewSoilP.mgkg,
+                          NewSoil.z.cm=NewSoil.z.cm,
                           EquilTime.yrs=EquilTime.yrs,
                           SoilMass.kgm2=SoilMass.kgm2,
                           BulkDensity.gcc=BulkDensity.gcc,
@@ -248,8 +251,8 @@ raw.output=FALSE
            col=c("red","red","black"),
            pt.cex=1.25,ncol=1,bty="n",y.intersp=1,x.intersp=0.75,xpd=NA,xjust=0.5,yjust=0.5)
 
-    plot(cattail.density.per~dist,profile.dat,type="n",las=1,xlab="Distance (km)",ylab="Cattail Density (%)",yaxs="i",xaxs="i",xlim=c(0,Max.Dist),ylim=c(0,105))
-    lines(profile.dat$dist,profile.dat$cattail.density.per,lty=2,lwd=2)
+    plot(cattail.density.SS.per~dist,profile.dat,type="n",las=1,xlab="Distance (km)",ylab="Cattail Density (%)",yaxs="i",xaxs="i",xlim=c(0,Max.Dist),ylim=c(0,105))
+    lines(profile.dat$dist,profile.dat$cattail.density.SS.per,lty=2,lwd=2)
     lines(profile.dat$dist,profile.dat$cattail.time.per,col="black",lty=1,lwd=2)
     abline(h=cattail.i.per,col="black",lty=3)
     mtext(side=3,"Cattail Density")
@@ -265,5 +268,99 @@ raw.output=FALSE
 
   }
 
-  if(raw.output==TRUE){return(profile.dat)}
+  # Results Report
+  summary.distance<-summary.distance[summary.distance<Max.Dist]
+
+  # Simulation information
+  sim.zone<-data.frame(Parameter=c("Distance","Width","Area","STA.outflow.volume","Hydroperiod","Soil.Depth","P.Settle.Rate","STA.outflow.Conc","STA.outflow.Load"),
+                       Value=c(max(profile.dat$dist,na.rm=T),
+                               path.width.km,round(max(profile.dat$dist,na.rm=T)*path.width.km,2),
+                               outflow.q.kacft,
+                               hydroperiod.per,
+                               soil.z.cm,
+                               Psettle.myr,
+                               outflow.c.ugL,
+                               round((outflow.q.kacft*43560*0.001/3.28^3)*outflow.c.ugL/1000,1)))
+  #Distance Profile
+  DistanceProfile<-rbind(t(data.frame(WaterCol.Pconc=round(profile.dat[profile.dat$dist%in%summary.distance,"TP.Time.ugL"],1))),
+                         t(data.frame(SteadyState.WC.Conc=round(profile.dat[profile.dat$dist%in%summary.distance,"TP.SS.ugL"],1))),
+                         t(data.frame(SteadyState.Soil.Conc=round(profile.dat[profile.dat$dist%in%summary.distance,"SoilP.SS.mgkg"],0))),
+                         t(data.frame(Time.to.Steady.State=round(profile.dat[profile.dat$dist%in%summary.distance,"SSTime.yrs"],1))),
+                         t(data.frame(NewSoil.Depth=round(profile.dat[profile.dat$dist%in%summary.distance,"NewSoil.z.cm"],1))),
+                         t(data.frame(Soil.Mass.Accret=round(profile.dat[profile.dat$dist%in%summary.distance,"Soil.accret.cmyr"],2))),
+                         t(data.frame(Cattail.Density=round(profile.dat[profile.dat$dist%in%summary.distance,"cattail.time.per"],0))),
+                         t(data.frame(SteadyState.Cattail.Density=round(profile.dat[profile.dat$dist%in%summary.distance,"cattail.density.SS.per"],0)))
+  )
+  colnames(DistanceProfile)<-c(summary.distance)
+
+  #Water Budget
+  Flow.m<-data.frame(Total.Flow.m=round(c((outflow.q.kacft*43560*0.001/3.28^3)/TArea.km2*Yr.Display,
+                                          RF.myr*Yr.Display,ET.myr*Yr.Display,
+                                          ((outflow.q.kacft*43560*0.001/3.28^3)/TArea.km2*Yr.Display)+(RF.myr-ET.myr)*Yr.Display),2))
+  Flow.hm3<-data.frame(Total.Flow.hm3=round(Flow.m[,1]*TArea.km2,0))
+  Flow.myr<-data.frame(Sim.Avg.Flow.myr=if(Yr.Display==0){NA}else{Flow.m[,1]/Yr.Display})
+
+  Water.Budget<-cbind(Flow.m,Flow.hm3,Flow.myr)
+  rownames(Water.Budget)<-c("Inflow","Rainfall","ET","Outflow")
+
+  #
+  wghts=ifelse(profile.dat$dist==0|profile.dat$dist==maxdist.km,0.5,1)
+  #P Budget
+  PMass.mgm2.inflow<-Flow.m[1,]*outflow.c.ugL
+  PMass.mgm2.RF<-Flow.m[2,]*atmoP.mgm2yr
+  PMass.mgm2.removal<-sum(profile.dat$P.accret.mgm2yr*wghts)*CellArea.ha/TArea.km2/100*Yr.Display
+  PMass.mgm2.outflow<-PMass.mgm2.inflow+PMass.mgm2.RF-PMass.mgm2.removal
+  PMass.mgm2<-data.frame(PMass.mgm2=c(PMass.mgm2.inflow,PMass.mgm2.RF,PMass.mgm2.removal,PMass.mgm2.outflow))
+  PMass.mtons<-data.frame(PMass.mtons=PMass.mgm2[,1]*TArea.km2/1000)
+  Sim.Avg.Load.mgm2yr<-data.frame(Sim.Avg.Load.mgm2yr=round(if(Yr.Display==0){NA}else{PMass.mgm2[,1]/Yr.Display},1))
+
+  P.Budget<-cbind(round(PMass.mgm2,0),round(PMass.mtons,1),round(Sim.Avg.Load.mgm2yr,1))
+  rownames(P.Budget)<-c("Inflow","Rainfall","Removal","Outflow")
+
+  #Soils
+  BD.istore<-sum(bd.i.gcc*ifelse(profile.dat$dist==0|profile.dat$dist==maxdist.km,0.5,1))*CellArea.ha/TArea.km2/100
+  BD.curstore<-sum(profile.dat$BulkDensity.gcc*ifelse(profile.dat$dist==0|profile.dat$dist==maxdist.km,0.5,1))*CellArea.ha/TArea.km2/100
+  BD.accret<-bd.f.gcc
+
+  soilmass.i<-soil.z.cm*10*BD.istore
+  soilmass.cur<-soil.z.cm*10*BD.curstore
+  soilmass.accret<-(sum((profile.dat$P.accret.mgm2yr/profile.dat$NewSoilP.mgkg)*wghts)*CellArea.ha/TArea.km2/100)*Yr.Display
+  soilmass.burial<-soilmass.accret+soilmass.i-soilmass.cur
+
+  BD.burial<-if(Yr.Display==0){0}else{soilmass.burial/10/((sum(profile.dat$Soil.accret.cmyr*wghts)*CellArea.ha/TArea.km2/100)*Yr.Display)}
+
+  Pvol.i<-sum((soilP.i.mgkg*bd.i.gcc/1000)*wghts)*CellArea.ha/TArea.km2/100
+  Pvol.c<-sum((profile.dat$Avg.SoilP.mgkg*profile.dat$BulkDensity.gcc/1000)*wghts)*CellArea.ha/TArea.km2/100
+  Pconc.i<-Pvol.i/bd.i.gcc*1000
+  Pconc.c<-Pvol.c/BD.curstore*1000
+
+  Pmass.i<-soil.z.cm*10000*Pvol.i
+  Pmass.c<-soil.z.cm*10000*Pvol.c
+  Pmass.accret<-(sum(profile.dat$P.accret.mgm2yr*wghts)*CellArea.ha/TArea.km2/100)*Yr.Display
+  Pmass.burial<-Pmass.accret+Pmass.i-Pmass.c
+
+  Pconc.accret<-if(soilmass.accret==0){0}else{Pmass.accret/soilmass.accret}
+  Pconc.burial<-if(soilmass.burial==0){0}else{Pmass.burial/soilmass.burial}
+  Pvol.accret<-BD.accret*Pconc.accret/1000
+  Pvol.burial<-BD.burial*Pconc.burial/1000
+
+  soilmass<-data.frame(SoilMass.kgm2=c(soilmass.i,soilmass.cur,soilmass.accret,soilmass.burial))
+  PMass.mgm2<-data.frame(PMass.mgm2=c(Pmass.i,Pmass.c,Pmass.accret,Pmass.burial))
+  PConc.mgkg<-data.frame(PConc.mgkg=c(Pconc.i,Pconc.c,Pconc.accret,Pconc.burial))
+  BD.gcm3<-data.frame(BulkDensity.gcm3=c(BD.istore,BD.curstore,BD.accret,BD.burial))
+  PVol.mgcm3<-data.frame(PVol.mgcm3=c(Pvol.i,Pvol.c,Pvol.accret,Pvol.burial))
+
+  soils<-cbind(round(soilmass,2),round(PMass.mgm2,0),round(PConc.mgkg,0),round(BD.gcm3,3),round(PVol.mgcm3,3))
+  rownames(soils)<-c("Initial Storage","Current Storage","Accretion","Burial")
+
+  # Final table
+  out.sum<-list("Time.yrs" = Yr.Display,
+                "Simulated.Zone"= sim.zone,
+                "DistanceProfile"=DistanceProfile,
+                "Water.Budget"=Water.Budget,
+                "P.MassBalance"=P.Budget,
+                "Soils"=soils)
+
+
+  if(raw.output==TRUE){return(profile.dat)}else{out.sum}
 }

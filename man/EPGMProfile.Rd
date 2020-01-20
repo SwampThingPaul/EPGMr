@@ -9,9 +9,9 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
   Hydroperiod = NA, Soil.Depth = NA, Soil.BulkDensity.inital = NA,
   Soil.TPConc.inital = NA, Vertical.SoilTPGradient.inital = NA,
   Soil.BulkDensity.final = NA, PSettlingRate = NA, P.AtmoDep = NA,
-  Rainfall = NA, ET = NA, Dist.Display = 12, Yr.Display = 30,
-  Max.Yrs = 200, Max.Dist = 15, Dist.increment.km = 0.1,
-  plot.profile = TRUE, raw.output = FALSE)
+  Rainfall = NA, ET = NA, Yr.Display = 30, Max.Yrs = 200,
+  Max.Dist = 15, Dist.increment.km = 0.1, plot.profile = TRUE,
+  raw.output = FALSE, summary.distance = c(0, 0.5, 1, 2, 4, 8, 10))
 }
 \arguments{
 \item{case.no}{Case number from the pre-loaded example data (values ranges from 1 to 12)}
@@ -38,8 +38,6 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 
 \item{ET}{Annual evapotranspiration estimate (m Year^{-1}).}
 
-\item{Dist.Display}{Output display result for this distance}
-
 \item{Yr.Display}{Output displays results for this time (years)}
 
 \item{Max.Yrs}{Maximum number of years simulated}
@@ -50,6 +48,10 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 
 \item{plot.profile}{If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.}
 
+\item{raw.output}{If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters. If \code{FALSE} a summary results table will print.}
+
+\item{summary.distance}{Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.}
+
 \item{Start.Discharge}{The year which this particular STA began discharge operations.}
 
 \item{Soil.BulkDensity.intial}{The initial bulk density prior to dicharge of the soil downstream of the system (in g cm^{3}).}
@@ -57,6 +59,8 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 \item{Soil.TPConc.intial}{The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg^{-1}).}
 
 \item{Vertical.soilTPGradient.intial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\^{-3} cm^{-1}).}
+
+\item{Dist.Display}{Output display result for this distance}
 }
 \value{
 This function comuptes and plots the distance profile based on input values

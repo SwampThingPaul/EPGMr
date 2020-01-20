@@ -11,16 +11,16 @@ described in:
 
   - Walker WW, Kadlec, R.H. (1996) A Model for Simulating Phosphorus
     Concentrations in Waters and Soils Downstream of Everglades
-    Stormwater Treatment Areas. U.S. Department of the Interior.
-    [Report](http://www.wwwalker.net/epgm/epgm_Aug_1996_1_of_2.pdf),
+    Stormwater Treatment Areas. U.S. Department of the Interior. Links
+    to: [Report](http://www.wwwalker.net/epgm/epgm_Aug_1996_1_of_2.pdf);
     [Appendix](http://www.wwwalker.net/epgm/epgm_Aug_1996_2_of_2.pdf).
 
-The model is further described in:
+The model is further discussed in:
 
   - Kadlec RH, Walker WW (1999) Management models to evaluate phosphorus
     impacts on wetlands. In: Reddy KR, O’Conner GA, Schelske CL (eds)
     Phosphorus Biogeochemistry in Subtropical Ecosystems. Lewis
-    Publishers, Boca Raton, FL, pp 621–639
+    Publishers, Boca Raton, FL, pp 621–639.
 
   - Walker WW, Kadlec RH (2011) Modeling Phosphorus Dynamics in
     Everglades Wetlands and Stormwater Treatment Areas. Critical Reviews
@@ -68,11 +68,68 @@ devtools::install_github("SwampThingPaul/EPGMr")
 
 ## Functions
 
-This will run the example case number 11 and plot the distance profile
-depicited below.
+This will run the example case number 11, plot the distance profile
+depicited below and provide a results table. If `raw.output` was set to
+`TRUE`, the raw data behind the plots and summary tables would be
+printed in the console. The results output table under
+`$DistanceProfile` provides a summary of the simulation period at
+several user input distances, however the default argument in the
+function is `summary.distance=c(0,0.5,1,2,4,8,10)`
 
 ``` r
-EPGMProfile(case.no=11,plot.profile=T)
+EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,8,10))
 ```
 
 <img src="README_files/figure-gfm/distance profile plot-1.png" title="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." alt="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." style="display: block; margin: auto;" />
+
+    ## $Time.yrs
+    ## [1] 30
+    ## 
+    ## $Simulated.Zone
+    ##            Parameter   Value
+    ## 1           Distance  15.000
+    ## 2              Width  10.500
+    ## 3               Area 157.500
+    ## 4 STA.outflow.volume 281.300
+    ## 5        Hydroperiod   0.914
+    ## 6         Soil.Depth  10.000
+    ## 7      P.Settle.Rate  10.200
+    ## 8   STA.outflow.Conc 122.000
+    ## 9   STA.outflow.Load  42.400
+    ## 
+    ## $DistanceProfile
+    ##                                   0       1       2       4      8     10
+    ## WaterCol.Pconc               122.00   93.70   72.10   43.10  16.90  11.50
+    ## SteadyState.WC.Conc          122.00   93.70   72.10   43.10  16.90  11.50
+    ## SteadyState.Soil.Conc       2131.00 1744.00 1449.00 1053.00 694.00 620.00
+    ## Time.to.Steady.State          15.00   16.00   17.20   20.90  35.20  46.30
+    ## NewSoil.Depth                 10.00   10.00   10.00   10.00   8.50   6.50
+    ## Soil.Mass.Accret               0.67    0.63    0.58    0.48   0.28   0.22
+    ## Cattail.Density              100.00   99.00   95.00   53.00   5.00   2.00
+    ## SteadyState.Cattail.Density  100.00   99.00   95.00   53.00   9.00   5.00
+    ## 
+    ## $Water.Budget
+    ##          Total.Flow.m Total.Flow.hm3 Sim.Avg.Flow.myr
+    ## Inflow          66.14          10417         2.204667
+    ## Rainfall        34.80           5481         1.160000
+    ## ET              41.40           6520         1.380000
+    ## Outflow         59.54           9378         1.984667
+    ## 
+    ## $P.MassBalance
+    ##          PMass.mgm2 PMass.mtons Sim.Avg.Load.mgm2yr
+    ## Inflow         8069      1270.9               269.0
+    ## Rainfall       1493       235.1                49.8
+    ## Removal        8986      1415.3               299.5
+    ## Outflow         576        90.7                19.2
+    ## 
+    ## $Soils
+    ##                 SoilMass.kgm2 PMass.mgm2 PConc.mgkg BulkDensity.gcm3
+    ## Initial Storage         10.20       2020        198            0.102
+    ## Current Storage          8.46       6763        800            0.085
+    ## Accretion                8.22       8986       1093            0.080
+    ## Burial                   9.97       4243        426            0.097
+    ##                 PVol.mgcm3
+    ## Initial Storage      0.020
+    ## Current Storage      0.068
+    ## Accretion            0.087
+    ## Burial               0.041
