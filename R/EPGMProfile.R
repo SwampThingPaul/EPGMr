@@ -32,7 +32,7 @@
 #' @param summary.distance Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.
 #' @keywords "water quality"
 #' @export
-#' @return This function comuptes and plots the distance profile based on input values
+#' @return This function computes and plots the distance profile along the gradient based on input values
 #' @examples
 #' EPGMProfile(case.no=11)
 #'

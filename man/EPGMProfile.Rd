@@ -66,7 +66,7 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 \item{Dist.Display}{Output display result for this distance}
 }
 \value{
-This function comuptes and plots the distance profile based on input values
+This function computes and plots the distance profile along the gradient based on input values
 }
 \description{
 The model is based primarily upon data collected in the early 1990's along the phosphorus gradient in WCA-2A. Substantial additional data collected since then in WCA-2A and other locations indicate a need to recalibrate the model and potentially revise its structure. Recent data suggest, for example, that the relationship between cattail density and soil P needs recalibration and that actual soil P thresholds for biological impacts are probably lower than reflected in the original calibrations.  There are also issues relating to interpretation of and potential anomalies in the historical soil P calibration data attributed to variations in soil core collection method and definition of the soil/water interface (inclusion vs. exclusion of floc layer). There are also indications in the recent data of biologically-mediated vertical transport and/or mixing that are not reflected in the current model structure.
