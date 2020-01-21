@@ -3,6 +3,20 @@ EPGMr
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
+----
+# This Package is stil _in Development_
+
+# Task Lists
+- [x] Distance profile function, `EPGMProfile()` with plots
+- [x] Add summary reults table to distance profile function, `EPGMProfile()`.
+- [ ] Develop time-series function.
+- [ ] Submit to [rOpenSci](https://ropensci.org/) for community peer-review.
+- [ ] Submit to [CRAN](https://cran.r-project.org/submit.html)
+
+-----
+
+__Contact Info:__  [Webpage](http://swampthingecology.org) - [Twitter](https://twitter.com/SwampThingPaul) - [Email](mailto:pauljulianphd@gmail.com)
+
 -----
 
 This package is an R-version of the original Everglades Phosphorus
