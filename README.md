@@ -4,7 +4,7 @@ EPGMr
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
 ----
-# This Package is stil _in Development_
+# This Package is still _in Development_
 
 # Task Lists
 - [x] Distance profile function, `EPGMProfile()` with plots
