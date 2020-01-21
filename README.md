@@ -3,19 +3,26 @@ EPGMr
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
-----
-# This Package is still _in Development_
+-----
+
+# This Package is still *in Development*
 
 # Task Lists
-- [x] Distance profile function, `EPGMProfile()` with plots
-- [x] Add summary reults table to distance profile function, `EPGMProfile()`.
-- [ ] Develop time-series function.
-- [ ] Submit to [rOpenSci](https://ropensci.org/) for community peer-review.
-- [ ] Submit to [CRAN](https://cran.r-project.org/submit.html)
+
+  - [x] Distance profile function, `EPGMProfile()` with plots
+  - [x] Add summary reults table to distance profile function,
+    `EPGMProfile()`.
+  - [ ] Develop time-series function.
+  - [ ] Develop threshold evaluation function.
+  - [ ] Submit to [rOpenSci](https://ropensci.org/) for community
+    peer-review.
+  - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html)
 
 -----
 
-__Contact Info:__  [Webpage](http://swampthingecology.org) - [Twitter](https://twitter.com/SwampThingPaul) - [Email](mailto:pauljulianphd@gmail.com)
+**Contact Info:** [Webpage](http://swampthingecology.org) -
+[Twitter](https://twitter.com/SwampThingPaul) -
+[Email](mailto:pauljulianphd@gmail.com)
 
 -----
 
