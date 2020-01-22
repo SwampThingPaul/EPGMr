@@ -3,6 +3,8 @@ EPGMr
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
+[![](https://img.shields.io/github/last-commit/SwampThingPaul/EPGMr.svg)](https://github.com/SwampThingPaul/EPGMr/commits/master)
+
 -----
 
 # This Package is still *in Development*
