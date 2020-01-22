@@ -12,7 +12,7 @@ EPGMr
   - [x] Distance profile function, `EPGMProfile()` with plots.
   - [x] Add summary reults table to distance profile function,
     `EPGMProfile()`.
-  - [ ] Develop time-series function.
+  - [ ] Develop time-series function (**In Progress**).
   - [ ] Develop threshold evaluation function.
   - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
     files.
@@ -91,6 +91,8 @@ devtools::install_github("SwampThingPaul/EPGMr")
 
 ## Functions
 
+*Distance Profile*
+
 This will run the example case number 11, plot the distance profile
 depicited below and provide a summary results table. If `raw.output` was
 set to `TRUE`, the raw data behind the plots and summary tables would be
@@ -107,7 +109,7 @@ the simulation period (default is 30 years).
 EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,10))
 ```
 
-<img src="README_files/figure-gfm/distance profile plot-1.png" title="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." alt="Distance profile for Case 11 (i.e. S10s) at the end of the 30 year simulation period." style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/distance profile plot-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30
@@ -160,3 +162,17 @@ EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,10))
     ## Current Storage      0.068
     ## Accretion            0.087
     ## Burial               0.041
+
+*Time Profile*
+
+This function will run the EPGM model over a determined period of time
+(with specificied time increment). If `raw.output` was set to `TRUE`,
+the raw data behind the plots and summary tables would be printed in the
+console. This will results in a `data.frame` with data specific to space
+(i.e. distance) and time (i.e. year).
+
+``` r
+EPGMTime(case.no=11)
+```
+
+![](README_files/figure-gfm/time%20profile%20plot-1.png)<!-- -->
