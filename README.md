@@ -13,6 +13,7 @@ EPGMr
   - [x] Add summary reults table to distance profile function,
     `EPGMProfile()`.
   - [ ] Develop time-series function (**In Progress**).
+      - [ ] Develope time-series results summary function.
   - [ ] Develop threshold evaluation function.
   - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
     files.

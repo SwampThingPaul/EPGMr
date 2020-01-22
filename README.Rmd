@@ -17,6 +17,7 @@ library(EPGMr)
 - [x] Distance profile function, `EPGMProfile()` with plots.
 - [x] Add summary reults table to distance profile function, `EPGMProfile()`.
 - [ ] Develop time-series function (__In Progress__).
+  - [ ] Develope time-series results summary function.
 - [ ] Develop threshold evaluation function.
 - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd` files.
 - [ ] Submit to [rOpenSci](https://ropensci.org/) for community peer-review.
