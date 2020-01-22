@@ -19,7 +19,7 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 
 \item{Start.Discharge}{The year of discharge started}
 
-\item{STA.outflow.TPconc}{Outflow total phosphorus concentration (in ug L^{-1}) for this STA.}
+\item{STA.outflow.TPconc}{Outflow total phosphorus concentration (in ug L\^{-1}) for this STA.}
 
 \item{STA.outflow.vol}{Annual outflow discharge volume (in x10^{3} Acre-Feet Year^{-1}) for this STA.}
 

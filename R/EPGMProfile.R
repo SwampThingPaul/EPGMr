@@ -8,7 +8,7 @@
 #' @param case.no Case number from the pre-loaded example data (values ranges from 1 to 12)
 #' @param Start.Discharge The year of discharge started
 #' @param Start.Discharge The year which this particular STA began discharge operations.
-#' @param STA.outflow.TPconc Outflow total phosphorus concentration (in ug L^{-1}) for this STA.
+#' @param STA.outflow.TPconc Outflow total phosphorus concentration (in ug L\^{-1}) for this STA.
 #' @param STA.outflow.vol Annual outflow discharge volume (in x10^{3} Acre-Feet Year^{-1}) for this STA.
 #' @param FlowPath.width The width of the downstream flow path (in kilometers).
 #' @param Hydroperiod Average hydroperiod (time above ground surface) of the downstream system (in percent).

@@ -14,6 +14,8 @@ EPGMr
     `EPGMProfile()`.
   - [ ] Develop time-series function.
   - [ ] Develop threshold evaluation function.
+  - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
+    files.
   - [ ] Submit to [rOpenSci](https://ropensci.org/) for community
     peer-review.
   - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html)
