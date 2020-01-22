@@ -9,7 +9,7 @@ EPGMr
 
 # Task Lists
 
-  - [x] Distance profile function, `EPGMProfile()` with plots
+  - [x] Distance profile function, `EPGMProfile()` with plots.
   - [x] Add summary reults table to distance profile function,
     `EPGMProfile()`.
   - [ ] Develop time-series function.
@@ -18,7 +18,7 @@ EPGMr
     files.
   - [ ] Submit to [rOpenSci](https://ropensci.org/) for community
     peer-review.
-  - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html)
+  - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html).
 
 -----
 

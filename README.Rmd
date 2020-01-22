@@ -14,13 +14,13 @@ library(EPGMr)
 # This Package is still _in Development_
 
 # Task Lists
-- [x] Distance profile function, `EPGMProfile()` with plots
+- [x] Distance profile function, `EPGMProfile()` with plots.
 - [x] Add summary reults table to distance profile function, `EPGMProfile()`.
 - [ ] Develop time-series function.
 - [ ] Develop threshold evaluation function.
 - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd` files.
 - [ ] Submit to [rOpenSci](https://ropensci.org/) for community peer-review.
-- [ ] Submit to [CRAN](https://cran.r-project.org/submit.html)
+- [ ] Submit to [CRAN](https://cran.r-project.org/submit.html).
 
 ***
 
