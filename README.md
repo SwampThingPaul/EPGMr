@@ -14,8 +14,9 @@ EPGMr
   - [x] Distance profile function, `EPGMProfile()` with plots.
   - [x] Add summary reults table to distance profile function,
     `EPGMProfile()`.
-  - [ ] Develop time-series function, `EPGMTime()` (**In Progress**).
-      - [ ] Develope time-series results summary function.
+  - [x] Develop time-series function, `EPGMTime()`.
+      - [ ] Develope time-series results summary function (**In
+        Progress**).
   - [ ] Develop threshold evaluation function.
   - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
     files.
@@ -79,9 +80,10 @@ inversely related to water-column concentration.
 
 ### Conceptual Figure of the Model
 
-EPGM structure
-
 ![EPGM](http://www.wwwalker.net/epgm/epgmpic.gif)
+
+Everglades Phosphorus Gradient Model structure (*Walker and Kadlec
+1996*)
 
 -----
 
