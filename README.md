@@ -3,8 +3,6 @@ EPGMr
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
------
-
 # Task Lists
 
   - [x] Distance profile function, `EPGMProfile()` with plots.
