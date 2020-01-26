@@ -89,6 +89,43 @@ devtools::install_github("SwampThingPaul/EPGMr")
 
 ## Functions
 
+For the examples below we are going to use an internal dataset within
+this package. This is also the data provided in the orginal
+[EPGM](http://www.wwwalker.net/epgm/) as case study examples. To see
+these data use the `data()` function.
+
+``` r
+data("casedat")
+```
+
+Case number 11 is data from the S10 structures that discharge into
+northeast Water Conservation area 2A, the historic eutrophication
+gradient within the Everglades ecosystem.
+
+``` r
+#I transposed the data for easy viewing. 
+t(casedat[casedat$case.number==11,])
+```
+
+    ##                                11            
+    ## case.number                    "11"          
+    ## STA.Name                       "S10s"        
+    ## Receiving.Area                 "NE 2A"       
+    ## Start.Discharge                "1962"        
+    ## STA.outflow.TPconc             "122"         
+    ## STA.outflow.vol                "281.3"       
+    ## FlowPath.width                 "10.5"        
+    ## Hydroperiod                    "91.4"        
+    ## Soil.Depth                     "10"          
+    ## Soil.BulkDensity.inital        "0.102"       
+    ## Soil.TPConc.inital             "198"         
+    ## Vertical.SoilTPGradient.inital "-0.001836432"
+    ## Soil.BulkDensity.final         "0.08"        
+    ## PSettlingRate                  "10.2"        
+    ## P.AtmoDep                      "42.9"        
+    ## Rainfall                       "1.16"        
+    ## ET                             "1.38"
+
 *Distance Profile*
 
 This will run the example case number 11, plot the distance profile

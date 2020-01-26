@@ -63,6 +63,19 @@ devtools::install_github("SwampThingPaul/EPGMr")
 
 ## Functions
 
+For the examples below we are going to use an internal dataset within this package. This is also the data provided in the orginal [EPGM](http://www.wwwalker.net/epgm/) as case study examples. To see these data use the `data()` function.
+
+```{r}
+data("casedat")
+```
+
+Case number 11 is data from the S10 structures that discharge into northeast Water Conservation area 2A, the historic eutrophication gradient within the Everglades ecosystem.
+
+```{r}
+#I transposed the data for easy viewing. 
+t(casedat[casedat$case.number==11,])
+```
+
 _Distance Profile_
 
 This will run the example case number 11, plot the distance profile depicited below and provide a summary results table. If `raw.output` was set to `TRUE`, the raw data behind the plots and summary tables would be printed in the console. If `results.table` was set to `TRUE` then a summary results table will be printed (default). The results output table under `$DistanceProfile` provides a summary of the simulation period at several user input distances, however the default argument in the function is `summary.distance=c(0,0.5,1,2,4,8,10)`. Other information in the summary result tab include, simulation inputs, water budget, phosphorus mass balance and information on regarding soils for the simulation period (default is 30 years). 
