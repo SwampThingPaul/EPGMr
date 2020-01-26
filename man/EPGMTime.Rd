@@ -11,7 +11,8 @@ EPGMTime(case.no = NA, Start.Discharge = NA, STA.outflow.TPconc = NA,
   Soil.BulkDensity.final = NA, PSettlingRate = NA, P.AtmoDep = NA,
   Rainfall = NA, ET = NA, Dist.Display = 12, Dist.slice = c(0, 0.5,
   1, 2, 5, 10), Max.Yrs = 200, Max.Dist = 15, Time.increment.yr = 5,
-  Dist.increment.km = 0.1, plot.profile = TRUE, raw.output = FALSE)
+  Dist.increment.km = 0.1, plot.profile = TRUE,
+  raw.time.output = FALSE, results.time.table = TRUE)
 }
 \arguments{
 \item{case.no}{Case number from the pre-loaded example data (values ranges from 1 to 12)}
@@ -52,7 +53,9 @@ EPGMTime(case.no = NA, Start.Discharge = NA, STA.outflow.TPconc = NA,
 
 \item{plot.profile}{If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.}
 
-\item{raw.output}{If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.}
+\item{raw.time.output}{If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.}
+
+\item{results.time.table}{If \code{TRUE} a summary results table will be printed in the console. Default is set to \code{TRUE}.}
 
 \item{Start.Discharge}{The year which this particular STA began discharge operations.}
 

@@ -3,11 +3,7 @@ EPGMr
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
-[![](https://img.shields.io/github/last-commit/SwampThingPaul/EPGMr.svg)](https://github.com/SwampThingPaul/EPGMr/commits/master)
-
 -----
-
-# This Package is still *in Development*
 
 # Task Lists
 
@@ -15,9 +11,8 @@ EPGMr
   - [x] Add summary reults table to distance profile function,
     `EPGMProfile()`.
   - [x] Develop time-series function, `EPGMTime()`.
-      - [ ] Develope time-series results summary function (**In
-        Progress**).
-  - [ ] Develop threshold evaluation function.
+      - [x] Develope time-series results summary function.
+  - [x] Develop threshold evaluation function.
   - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
     files.
   - [ ] Submit to [rOpenSci](https://ropensci.org/) for community
@@ -111,7 +106,7 @@ budget, phosphorus mass balance and information on regarding soils for
 the simulation period (default is 30 years).
 
 ``` r
-EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,10))
+EPGMProfile(case.no=11,plot.profile=TRUE,summary.distance=c(0,1,2,4,10))
 ```
 
 <img src="README_files/figure-gfm/distance profile plot-1.png" style="display: block; margin: auto;" />
@@ -171,13 +166,106 @@ EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,10))
 *Time Profile*
 
 This function will run the EPGM model over a determined period of time
-(with specificied time increment). If `raw.output` was set to `TRUE`,
-the raw data behind the plots and summary tables would be printed in the
-console. This will results in a `data.frame` with data specific to space
-(i.e. distance) and time (i.e. year).
+(with specificied time increment). If `raw.time.output` is set to
+`TRUE`, the raw data behind the plots and summary tables will be printed
+in the console and/or saved as an object. This will results in a
+`data.frame` with data specific to space (i.e. distance) and time
+(i.e. year).
 
 ``` r
 EPGMTime(case.no=11)
 ```
 
 ![](README_files/figure-gfm/time%20profile%20plot-1.png)<!-- -->
+
+    ## $Time.yrs
+    ## [1] 200
+    ## 
+    ## $Time.increment.yrs
+    ## [1] 5
+    ## 
+    ## $Simulated.Zone
+    ##                    Parameter Value
+    ## 1                Distance.km  15.0
+    ## 2                   Width.km  10.5
+    ## 3                   Area.km2 157.5
+    ## 4 STA.outflow.volume.kAcftyr 281.3
+    ## 5            Hydroperiod.pct  91.4
+    ## 6              Soil.Depth.cm  10.0
+    ## 7          P.Settle.Rate.myr  10.2
+    ## 8       STA.outflow.Conc.ugL 122.0
+    ## 9      STA.outflow.Load.mtyr  42.4
+    ## 
+    ## $TimeProfile
+    ##   Time.Step Year SoilP.mgkg CattailDensity.ha
+    ## 1         0 1961        198                47
+    ## 2         5 1966        335               227
+    ## 3        10 1971        477              1605
+    ## 4        15 1976        622              3203
+    ## 5        20 1981        715              4239
+    ## 6        25 1986        765              4615
+    ## 7        30 1991        800              4755
+    ## 8        35 1996        826              4830
+    ## 9       200 2161        902              5005
+
+*Threshold Evaluation*
+
+This function will calculate, summarise and plot area exceedance for
+results from `EPGMTime()`. Currently the function is configured to
+evaluate three threshold for water column, soil and cattail density
+within the modelled flow-path. Much like the other functions, If
+`raw.area.output` is set to `TRUE`, then the raw results summarized in
+the summary table and plots will be provided as a `data.frame`.
+
+``` r
+example<-EPGMTime(case.no=11,raw.time.output=TRUE,plot.profile=FALSE)
+
+EPGMThreshold(example)
+```
+
+![](README_files/figure-gfm/threshold%20plot-1.png)<!-- -->
+
+    ## $TotalArea.km2
+    ## [1] 157.5
+    ## 
+    ## $Thresholds
+    ##            Thresholds Value1 Value2 Value3
+    ## 1 Water Column (ug/L)     10     15     20
+    ## 2        Soil (mg/kg)    500    600   1000
+    ## 3 Cattail Density (%)      5     20     90
+    ## 
+    ## $WaterColumn
+    ##    Time.Step Year   WC.10  WC.15  WC.20
+    ## 1          0 1961   0.000  0.000  0.000
+    ## 2          5 1966 113.925 89.775 76.125
+    ## 3         10 1971 113.925 89.775 76.125
+    ## 4         15 1976 113.925 89.775 76.125
+    ## 5         20 1981 113.925 89.775 76.125
+    ## 6         25 1986 113.925 89.775 76.125
+    ## 7         30 1991 113.925 89.775 76.125
+    ## 8         35 1996 113.925 89.775 76.125
+    ## 41       200 2161 113.925 89.775 76.125
+    ## 
+    ## $Soil
+    ##    Time.Step Year Soil.500 Soil.600 Soil.1000
+    ## 1          0 1961    0.000    0.000     0.000
+    ## 2          5 1966   23.625   13.125     0.000
+    ## 3         10 1971   50.925   40.425    15.225
+    ## 4         15 1976   67.725   56.175    30.975
+    ## 5         20 1981   80.325   67.725    42.525
+    ## 6         25 1986   90.825   78.225    45.675
+    ## 7         30 1991   99.225   85.575    45.675
+    ## 8         35 1996  107.625   92.925    45.675
+    ## 41       200 2161  157.500  113.925    45.675
+    ## 
+    ## $Cattail
+    ##    Time.Step Year Cattail.5 Cattail.20 Cattail.90
+    ## 1          0 1961     0.000      0.000      0.000
+    ## 2          5 1966    12.075      0.000      0.000
+    ## 3         10 1971    39.375     23.625      1.575
+    ## 4         15 1976    55.125     39.375     18.375
+    ## 5         20 1981    66.675     50.925     25.725
+    ## 6         25 1986    77.175     59.325     25.725
+    ## 7         30 1991    84.525     61.425     25.725
+    ## 8         35 1996    91.875     61.425     25.725
+    ## 41       200 2161   108.675     61.425     25.725

@@ -28,7 +28,8 @@
 #' @param Time.increment.yr Year increment to be modeled
 #' @param Dist.increment.km Distance increment modeled
 #' @param plot.profile If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.
-#' @param raw.output If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.
+#' @param raw.time.output If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.
+#' @param results.time.table If \code{TRUE} a summary results table will be printed in the console. Default is set to \code{TRUE}.
 #' @keywords "water quality"
 #' @export
 #' @return This function computes and plots the distance profile along the gradient based on input values
@@ -57,7 +58,8 @@ EPGMTime=function(case.no=NA,
                   Time.increment.yr=5,
                   Dist.increment.km=0.1,
                   plot.profile=TRUE,
-                  raw.output=FALSE
+                  raw.time.output=FALSE,
+                  results.time.table=TRUE
 
 ){
 
@@ -116,6 +118,8 @@ EPGMTime=function(case.no=NA,
   time<-seq(0,Max.Yrs,Time.increment.yr)
   time<-time[time<=Max.Yrs]
 
+  maxdist.km<-min(c(50,Max.Dist),na.rm=T)
+
   Dist.slice<-c(Dist.slice,Max.Dist)
 
   time.dat<-data.frame()
@@ -137,7 +141,7 @@ EPGMTime=function(case.no=NA,
                                            raw.output=T,results.table=F,plot.profile = F,Yr.Display =time[i])}
     else{tmp<-EPGMProfile(case.no=case.no,raw.output=T,results.table=F,plot.profile = F,Yr.Display =time[i])}
     tmp$time.step<-time[i]
-    tmp$Year<-Start.Discharge+time[i]
+    tmp$Year<-(start.year+time[i])-1
     time.dat<-rbind(tmp,time.dat)
   }
   time.dat<-time.dat[order(time.dat$time.step,time.dat$dist),]
@@ -199,5 +203,49 @@ EPGMTime=function(case.no=NA,
     mtext(side=1,line=1.5,"Time (Yrs)")
 
   }
+
+  if(results.time.table==TRUE){
+    cell.area=path.width.km*Dist.increment.km
+    total.area=Max.Dist*path.width.km
+    wghts<-ifelse(time.dat$dist==0|time.dat$dist==maxdist.km,0.5,1)
+
+    soil.ss.time<-aggregate(time.dat$SoilP.SS.mgkg*wghts*(cell.area/total.area),by=list(time.dat$time.step),"sum")
+    BD<-aggregate(time.dat$BulkDensity.gcc*wghts*(cell.area/total.area),by=list(time.dat$time.step),"sum")
+    avg.vol.soilP<-aggregate((time.dat$Avg.SoilP.mgkg*time.dat$BulkDensity.gcc/1000)*wghts*(cell.area/total.area),by=list(time.dat$time.step),"sum")
+    avg.soilP<-data.frame(Group.1=avg.vol.soilP[,1],x=avg.vol.soilP[,2]/BD[,2]*1000)
+    cattail.ha<-aggregate(time.dat$cattail.time.per*wghts*cell.area,by=list(time.dat$time.step),"sum")
+    time.val<-time.dat$time.step
+
+    rpt.time.step<-if(Time.increment.yr==1){c(0,1,2,3,10,15,20,25,200)}else{c(seq(0,Max.Yrs,Time.increment.yr)[1:8],Max.Yrs)}
+
+    # Simulation information
+    sim.zone<-data.frame(Parameter=c("Distance.km","Width.km","Area.km2","STA.outflow.volume.kAcftyr","Hydroperiod.pct","Soil.Depth.cm","P.Settle.Rate.myr","STA.outflow.Conc.ugL","STA.outflow.Load.mtyr"),
+                         Value=c(Max.Dist,
+                                 path.width.km,
+                                 total.area,
+                                 outflow.q.kacft,
+                                 hydroperiod.per*100,
+                                 soil.z.cm,
+                                 Psettle.myr,
+                                 outflow.c.ugL,
+                                 round((outflow.q.kacft*43560*0.001/3.28^3)*outflow.c.ugL/1000,1)))
+
+    #Time series summary
+    TimeProfile.summary=data.frame(Time.Step=rpt.time.step,
+                                   Year=(start.year+rpt.time.step)-1,
+                                   SoilP.mgkg=round(avg.soilP[avg.soilP$Group.1%in%rpt.time.step,2],0),
+                                   CattailDensity.ha=round(cattail.ha[cattail.ha$Group.1%in%rpt.time.step,2],0))
+
+
+
+    out.time.sum<-list("Time.yrs" = Max.Yrs, "Time.increment.yrs"=Time.increment.yr,
+                       "Simulated.Zone"= sim.zone,
+                       "TimeProfile"=TimeProfile.summary)
+  }
+
+  #class(time.dat)<-"EPGMr"
+  if(raw.time.output==T){return(time.dat)}
+  if(results.time.table==TRUE){return(out.time.sum)}
+
 }
 

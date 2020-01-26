@@ -86,7 +86,7 @@ summary.distance=c(0,0.5,1,2,4,8,10)
     stop("Distance values much be equal to or greater than zero")
   }
   if(raw.output==TRUE&results.table==TRUE){
-    warning("Can have raw.output and results.table, You can't have your cake and eat it too.")
+    warning("Can't have raw.output and results.table, You can't have your cake and eat it too.")
     raw.output=FALSE
   }
 
@@ -375,6 +375,8 @@ summary.distance=c(0,0.5,1,2,4,8,10)
                 "P.MassBalance"=P.Budget,
                 "Soils"=soils)
 }
+  #class(results.table)<-"EPGMr"
+  #class(raw.output)<-"EPGMr"
 
   if(raw.output==TRUE){return(profile.dat)}
   if(results.table==TRUE){return(out.sum)}

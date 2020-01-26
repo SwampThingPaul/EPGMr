@@ -8,23 +8,19 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #devtools::install_github("GuangchuangYu/badger")
-library(badger)
 library(EPGMr)
 ```
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
-`r badge_last_commit("SwampThingPaul/EPGMr")`
-
 ***
-# This Package is still _in Development_
 
 # Task Lists
 - [x] Distance profile function, `EPGMProfile()` with plots.
 - [x] Add summary reults table to distance profile function, `EPGMProfile()`.
 - [x] Develop time-series function, `EPGMTime()`.
-  - [ ] Develope time-series results summary function (__In Progress__).
-- [ ] Develop threshold evaluation function.
+  - [x] Develope time-series results summary function.
+- [x] Develop threshold evaluation function.
 - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd` files.
 - [ ] Submit to [rOpenSci](https://ropensci.org/) for community peer-review.
 - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html).
@@ -74,14 +70,23 @@ _Distance Profile_
 This will run the example case number 11, plot the distance profile depicited below and provide a summary results table. If `raw.output` was set to `TRUE`, the raw data behind the plots and summary tables would be printed in the console. If `results.table` was set to `TRUE` then a summary results table will be printed (default). The results output table under `$DistanceProfile` provides a summary of the simulation period at several user input distances, however the default argument in the function is `summary.distance=c(0,0.5,1,2,4,8,10)`. Other information in the summary result tab include, simulation inputs, water budget, phosphorus mass balance and information on regarding soils for the simulation period (default is 30 years). 
 
 ```{r distance profile plot, echo=TRUE, fig.width=8,fig.height=5,fig.align='center'}
-EPGMProfile(case.no=11,plot.profile=T,summary.distance=c(0,1,2,4,10))
+EPGMProfile(case.no=11,plot.profile=TRUE,summary.distance=c(0,1,2,4,10))
 ```
 
 _Time Profile_
 
-This function will run the EPGM model over a determined period of time (with specificied time increment). If `raw.output` was set to `TRUE`, the raw data behind the plots and summary tables would be printed in the console. This will results in a `data.frame` with data specific to space (i.e. distance) and time (i.e. year).
+This function will run the EPGM model over a determined period of time (with specificied time increment). If `raw.time.output` is set to `TRUE`, the raw data behind the plots and summary tables will be printed in the console and/or saved as an object. This will results in a `data.frame` with data specific to space (i.e. distance) and time (i.e. year).
 
 ```{r time profile plot, echo=TRUE, fig.width=8,fig.height=5,align='center'}
 EPGMTime(case.no=11)
 ```
 
+_Threshold Evaluation_
+
+This function will calculate, summarise and plot area exceedance for results from `EPGMTime()`. Currently the function is configured to evaluate three threshold for water column, soil and cattail density within the modelled flow-path. Much like the other functions, If `raw.area.output` is set to `TRUE`, then the raw results summarized in the summary table and plots will be provided as a `data.frame`. 
+
+```{r threshold plot, echo=TRUE, fig.width=7,fig.height=5.25,align='center'}
+example<-EPGMTime(case.no=11,raw.time.output=TRUE,plot.profile=FALSE)
+
+EPGMThreshold(example)
+```
