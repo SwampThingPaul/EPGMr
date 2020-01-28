@@ -19,9 +19,9 @@ EPGMTime(case.no = NA, Start.Discharge = NA, STA.outflow.TPconc = NA,
 
 \item{Start.Discharge}{The year of discharge started}
 
-\item{STA.outflow.TPconc}{Outflow total phosphorus concentration (in ug L\^{-1}) for this STA.}
+\item{STA.outflow.TPconc}{Outflow total phosphorus concentration (in \out{&mu;}g L\out{<sup>-1</sup>}) for this STA.}
 
-\item{STA.outflow.vol}{Annual outflow discharge volume (in x10^{3} Acre-Feet Year^{-1}) for this STA.}
+\item{STA.outflow.vol}{Annual outflow discharge volume (in x10\out{<sup>3</sup>} Acre-Feet Year\out{<sup>-1</sup>}) for this STA.}
 
 \item{FlowPath.width}{The width of the downstream flow path (in kilometers).}
 
@@ -29,15 +29,15 @@ EPGMTime(case.no = NA, Start.Discharge = NA, STA.outflow.TPconc = NA,
 
 \item{Soil.Depth}{Depth of soil (in centimeters).}
 
-\item{Soil.BulkDensity.final}{The final bulk density after dischage of the soil downstream of the system (in g cm^{-3}).}
+\item{Soil.BulkDensity.final}{The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
 
-\item{PSettlingRate}{The phosphorus settling rate estimated from steady-state conditions (m Year^{-1}).}
+\item{PSettlingRate}{The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).}
 
-\item{P.AtmoDep}{Phosphorus atmospheric depostition loading rate (in mg m^{-2} Year^{-1}).}
+\item{P.AtmoDep}{Phosphorus atmospheric depostition loading rate (in mg m\out{<sup>-2</sup>} Year\out{<sup>-1</sup>}).}
 
-\item{Rainfall}{Annual accumulated rainfall estimate (m Year^{-1}).}
+\item{Rainfall}{Annual accumulated rainfall estimate (m Year\out{<sup>-1</sup>}).}
 
-\item{ET}{Annual evapotranspiration estimate (m Year^{-1}).}
+\item{ET}{Annual evapotranspiration estimate (m Year\out{<sup>-1</sup>}).}
 
 \item{Dist.Display}{Output display result for this distance}
 
@@ -59,11 +59,11 @@ EPGMTime(case.no = NA, Start.Discharge = NA, STA.outflow.TPconc = NA,
 
 \item{Start.Discharge}{The year which this particular STA began discharge operations.}
 
-\item{Soil.BulkDensity.intial}{The initial bulk density prior to dicharge of the soil downstream of the system (in g cm^{3}).}
+\item{Soil.BulkDensity.intial}{The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
 
-\item{Soil.TPConc.intial}{The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg^{-1}).}
+\item{Soil.TPConc.intial}{The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).}
 
-\item{Vertical.soilTPGradient.intial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\^{-3} cm^{-1}).}
+\item{Vertical.soilTPGradient.intial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
 }
 \value{
 This function computes and plots the distance profile along the gradient based on input values

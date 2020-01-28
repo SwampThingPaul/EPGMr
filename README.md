@@ -11,7 +11,7 @@ EPGMr
   - [x] Develop time-series function, `EPGMTime()`.
       - [x] Develope time-series results summary function.
   - [x] Develop threshold evaluation function.
-  - [ ] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
+  - [x] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
     files.
   - [x] [rOpenSci](https://ropensci.org/) presubmission inquiry.
     [Link](https://github.com/ropensci/software-review/issues/365)
