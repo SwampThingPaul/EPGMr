@@ -13,10 +13,10 @@ EPGMr
   - [x] Develop threshold evaluation function.
   - [x] Figure out how to code greek (i.e. mu) and superscript for `.Rd`
     files.
-  - [x] [rOpenSci](https://ropensci.org/) presubmission inquiry.
-    [Link](https://github.com/ropensci/software-review/issues/365)
-  - [ ] Submit to [rOpenSci](https://ropensci.org/) for community
-    peer-review.
+  - [x] ~~[rOpenSci](https://ropensci.org/) presubmission inquiry.
+    [Link](https://github.com/ropensci/software-review/issues/365)~~
+  - [ ] ~~Submit to [rOpenSci](https://ropensci.org/) for community
+    peer-review.~~
   - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html).
 
 -----
