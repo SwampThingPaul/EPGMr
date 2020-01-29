@@ -73,7 +73,7 @@ summary.distance=c(0,0.5,1,2,4,8,10)
   if(is.na(case.no)==TRUE & input.val.na>1){
     stop("Missing inputs, either input a 'case.no' or all individual model parameters.")
   }
-  if(case.no>12){
+  if(is.na(case.no)==FALSE & case.no>12){
     stop("'case.no' range from 1 to 12.")
   }
   if(Dist.increment.km>Max.Dist){

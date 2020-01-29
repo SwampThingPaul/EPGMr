@@ -71,7 +71,7 @@ EPGMTime=function(case.no=NA,
   if(is.na(case.no)==TRUE & input.val.na>1){
     stop("Missing inputs, either input a 'case.no' or all individual model parameters.")
   }
-  if(case.no>12){
+  if(is.na(case.no)==FALSE & case.no>12){
     stop("'case.no' range from 1 to 12.")
   }
   if(Dist.increment.km>Max.Dist){
@@ -88,7 +88,7 @@ EPGMTime=function(case.no=NA,
     outflow.c.ugL<-STA.outflow.TPconc
     outflow.q.kacft<-STA.outflow.vol
     path.width.km<-FlowPath.width
-    hydroperiod.per<-Hydroperiod/100
+    hydroperiod.per<-Hydroperiod
     soil.z.cm<-Soil.Depth
     bd.i.gcc<-Soil.BulkDensity.inital
     soilP.i.mgkg<-Soil.TPConc.inital
@@ -103,7 +103,7 @@ EPGMTime=function(case.no=NA,
     outflow.c.ugL<-cases.dat[cases.dat$case.number==case.no,"STA.outflow.TPconc"]
     outflow.q.kacft<-cases.dat[cases.dat$case.number==case.no,"STA.outflow.vol"]
     path.width.km<-cases.dat[cases.dat$case.number==case.no,"FlowPath.width"]
-    hydroperiod.per<-cases.dat[cases.dat$case.number==case.no,"Hydroperiod"]/100
+    hydroperiod.per<-cases.dat[cases.dat$case.number==case.no,"Hydroperiod"]
     soil.z.cm<-cases.dat[cases.dat$case.number==case.no,"Soil.Depth"]
     bd.i.gcc<-cases.dat[cases.dat$case.number==case.no,"Soil.BulkDensity.inital"]
     soilP.i.mgkg<-cases.dat[cases.dat$case.number==case.no,"Soil.TPConc.inital"]

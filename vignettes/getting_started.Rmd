@@ -1,0 +1,236 @@
+---
+title: "Getting started with EPGMr"
+author: "Paul Julian"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Getting started with EPGMr}
+  \usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+options(continue=" ")
+options(width=60)
+library(knitr)
+```
+
+
+# Introduction
+
+Everglades Phosphorus Gradient Model (EPGM; Fig. 1) predicts variations in water-column phosphorus (P) concentration, peat accretion rate, and soil P concentration along a horizontal gradient imposed by an external P load and sheet-flow conditions. Cattail densities and total areas are predicted based upon correlations with soil P and are surrogates for impacts on ecosystem components which respond to soil P variations in similar concentration ranges. The model is calibrated to soil and vegetation data from Water Conservation Area - 2 (WCA-2; primarily), WCA-1, and WCA-3A. The model successfully simulates observed [longitudinal gradients in soil P concentration below the S10 structures in WCA-2A](http://www.wwwalker.net/epgm/wca2a_gradient.htm) after ~28 years of external P loading (1962 to 1990). Observed expansion of cattail populations in this region between 1973 and 1991 is also simulated, though somewhat over-predicted during the first 20 years. Model results suggest a linear relationship between marsh water-column and soil P concentrations over long time scales. Estimated soil response times range from 20 to 40 years, depending on soil depth, and are inversely related to water-column concentration.
+
+```{r figs, out.width="90%",echo=FALSE,fig.align="center",fig.cap="**Figure 1:** Generalized model structure of the Everglades Phosphorus Gradient Model as originally developed by Walker and Kadlec. The model embodies water and phosphorus mass conservation specific to wetland ecosystems designed for phosphorus management."}
+knitr::include_graphics("http://www.wwwalker.net/epgm/epgmpic.gif")
+```
+
+# Citing EPGMr
+A lot of time and effort went into the development of the original [EPGM](http://wwwalker.net/epgm/index.htm) and it is important to give the authors proper credit. This is the ultimate foundation of this `R` package.
+
+* Walker WW, Kadlec, R.H. (1996) A Model for Simulating Phosphorus Concentrations in Waters and Soils Downstream of Everglades Stormwater Treatment Areas. U.S. Department of the Interior
+
+It also took time in developement of the `EPGMr`, translating the spreadsheet model into the `R` environment. To see a current citation for `EPGMr`, use the following command in `R`:
+```{r}
+citation('EPGMr')
+```
+
+# Installation
+
+To install `EPGMr` from GitHub use:
+
+```{r,eval=F}
+install.packages("devtools");# if you do not have it installed on your PC
+devtools::install_github("SwampThingPaul/EPGMr")
+```
+
+
+# Using example data built into the package
+
+```{r}
+library(EPGMr)
+data("casedat")
+```
+
+This internal package data is a table of variables from data provided in the original EPGM model. This data (and the original) has 12 examples (cases) of phosphorus inputs, hydrologic information (inflow volume, rainfall, evapotranspiration and hydroperiod), soil depth of interest, soil characteristics, and soil gradient values. Examples include dicharges from Stormwater Treatment Area (STA) 2, 3/4, 5, 6 and the S10 structures. 
+
+# Running EPGMr
+
+`EPGMr` is broken into three functions. 
+
+* `EPGMProfile` simulates the phopshorus gradient (distance downstream) during a specified simulation period (default: 30 years). The function as defaulted also provides a summary results output and plot of water column total P, soil P and cattail density along the gradient. Graphical output includes steady state simulation and time at the simulation period (default: 30 years). 
+
+* `EPGMTime` uses `EPGMProfile` to simulate yearly P dynamics along the gradient for a specified period (default: 200 years) thereby simulating changes in P along the gradient over time. Similar to `EPGMProfile` as defaulted a summary table is provided based on distance intervals specified in the `Dist.slice` argument in the function (default is `c(0,0.5,1,2,5,10)`). Also as a default a series of time plots are generated for soil P and cattail density. 
+
+* `EPGMThreshold` evaluates raw outputs from `EPGMTime` relative to thresholds for water column, soil and cattail density. As a default it provides a summary table and plot. 
+
+## Running EPGMr with example data
+
+### `EPGMProfile()`
+
+To shorten the summary output, `summary.distance` was explicitly defined in the function. If this is omitted, the default distances will be used. 
+
+```{r distance profile plot, echo=TRUE, fig.width=8,fig.height=5,fig.align='center'}
+EPGMProfile(case.no=11,summary.distance=c(0,1,5,10))
+```
+
+
+### `EPGMTime()`
+
+```{r time profile plot, echo=TRUE, fig.width=8,fig.height=5,align='center'}
+EPGMTime(case.no=11)
+```
+
+
+
+### `EPGMThreshold()`
+
+For threshold evaluation, the raw output of `EPGMTime` is used to evaluate the identified thresholds. In this example default thresholds were used. 
+
+```{r threshold plot, echo=TRUE, fig.width=7,fig.height=5.25,align='center'}
+example<-EPGMTime(case.no=11,raw.time.output=TRUE,plot.profile=FALSE)
+
+EPGMThreshold(example)
+
+```
+
+## Running EPGMr with user data
+
+As an example of user input data, the data below is the data from the `casedat` internal data source for case number 11 (i.e. `casedat[11,]`). 
+
+### `EPGMProfile()`
+
+```{r distance profile plot user, echo=TRUE, fig.width=8,fig.height=5,fig.align='center'}
+#User defined inputs
+Discharge.Yr <- 1962
+Out.TPconc <- 122
+out.Q <- 281.3
+FP.width <- 10.5
+HP.per <- 91.4
+Soil.z <- 10
+Soil.BDi <- 0.102
+Soil.TPi <- 198
+TPGradient.i <- -0.0018
+Soil.BDf <- 0.08
+k <- 10.2
+P.dep <- 42.9
+RF <- 1.23
+ET <- 1.38
+
+EPGMProfile(
+  Start.Discharge = Discharge.Yr,
+  STA.outflow.TPconc = Out.TPconc, 
+  STA.outflow.vol = out.Q, 
+  FlowPath.width = FP.width,
+  Hydroperiod = HP.per, 
+  Soil.Depth = Soil.z, 
+  Soil.BulkDensity.inital = Soil.BDi,
+  Soil.TPConc.inital = Soil.TPi, 
+  Vertical.SoilTPGradient.inital = TPGradient.i,
+  Soil.BulkDensity.final = Soil.BDf, 
+  PSettlingRate = k, 
+  P.AtmoDep = P.dep,
+  Rainfall = RF, ET = ET,
+  summary.distance=c(0,1,5,10))
+
+```
+
+
+### `EPGMTime()`
+
+```{r time profile plot user, echo=TRUE, fig.width=8,fig.height=5,align='center'}
+EPGMTime(
+  Start.Discharge = Discharge.Yr,
+  STA.outflow.TPconc = Out.TPconc, 
+  STA.outflow.vol = out.Q, 
+  FlowPath.width = FP.width,
+  Hydroperiod = HP.per, 
+  Soil.Depth = Soil.z, 
+  Soil.BulkDensity.inital = Soil.BDi,
+  Soil.TPConc.inital = Soil.TPi, 
+  Vertical.SoilTPGradient.inital = TPGradient.i,
+  Soil.BulkDensity.final = Soil.BDf, 
+  PSettlingRate = k, 
+  P.AtmoDep = P.dep,
+  Rainfall = RF, ET = ET
+)
+```
+
+
+### `EPGMThreshold()`
+
+```{r threshold plot user, echo=TRUE, fig.width=7,fig.height=5.25,align='center'}
+example<-EPGMTime(Start.Discharge = Discharge.Yr,
+  STA.outflow.TPconc = Out.TPconc, 
+  STA.outflow.vol = out.Q, 
+  FlowPath.width = FP.width,
+  Hydroperiod = HP.per, 
+  Soil.Depth = Soil.z, 
+  Soil.BulkDensity.inital = Soil.BDi,
+  Soil.TPConc.inital = Soil.TPi, 
+  Vertical.SoilTPGradient.inital = TPGradient.i,
+  Soil.BulkDensity.final = Soil.BDf, 
+  PSettlingRate = k, 
+  P.AtmoDep = P.dep,
+  Rainfall = RF, ET = ET,
+  raw.time.output=TRUE,plot.profile=FALSE)
+
+
+EPGMThreshold(example)
+
+```
+
+
+### `EPGMProfile()` Example 2
+
+As another example input variables were adjusted different from that of the internal data. Maximum simulated distance along the gradient was also changed from teh default of 15 to 25.
+
+```{r distance profile plot user2, echo=TRUE, fig.width=8,fig.height=5,fig.align='center'}
+#User defined inputs
+Discharge.Yr <- 1962
+Out.TPconc <- 40
+out.Q <- 308.2
+FP.width <- 6
+HP.per <- 64
+Soil.z <- 10
+Soil.BDi <- 0.102
+Soil.TPi <- 339
+TPGradient.i <- -0.0018
+Soil.BDf <- 0.08
+k <- 10.2
+P.dep <- 42.9
+RF <- 1.23
+ET <- 1.38
+
+EPGMProfile(
+  Start.Discharge = Discharge.Yr,
+  STA.outflow.TPconc = Out.TPconc, 
+  STA.outflow.vol = out.Q, 
+  FlowPath.width = FP.width,
+  Hydroperiod = HP.per, 
+  Soil.Depth = Soil.z, 
+  Soil.BulkDensity.inital = Soil.BDi,
+  Soil.TPConc.inital = Soil.TPi, 
+  Vertical.SoilTPGradient.inital = TPGradient.i,
+  Soil.BulkDensity.final = Soil.BDf, 
+  PSettlingRate = k, 
+  P.AtmoDep = P.dep,
+  Rainfall = RF, ET = ET,
+  summary.distance=c(0,1,5,10),
+  Max.Dist=25)
+
+```
+
+
+## Potential errors
+
+1. If internal data is being used to run the model and the user selects a case number not in the list. 
+
+```{r, error=TRUE}
+EPGMProfile(case.no=14)
+```

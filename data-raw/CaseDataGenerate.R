@@ -10,7 +10,7 @@ casedat<-data.frame(case.number=1:12,
                       STA.Name=c("STA2","STA34","STA5","STA6","STA2",'STA34',"STA5","STA6","STA2GDR","STA2GDR","S10s","S10s"),
                       Receiving.Area=c("NW 2A","NE 3A","Rotenb","NW 3A","NW 2A","NE 3A","Rotenb","NW 3A","NW 2A","NW 2A","NE 2A","NE 2A"),
                       Start.Discharge=c(1999,2003,1999,1999,1999,2003,1999,1999,1999,1999,1962,1962),
-                      STA.outflow.TPconc=c(50,50,100,50,50,5050,50,50,40,40,122,122),
+                      STA.outflow.TPconc=c(50,50,100,50,50,50,50,50,40,40,122,122),
                       STA.outflow.vol=c(205.8,422.0,60.0,64.4,205.8,422.0,30.7,64.4,246.7,246.7,281.3,281.3),
                       FlowPath.width=c(12.1,14.2,3,6,12.1,14.2,3,6,12.1,12.1,10.5,10.5),
                       Hydroperiod=c(90,88,69,61,92,88,69,61,92,92,91.4,91.4),
@@ -24,4 +24,4 @@ casedat<-data.frame(case.number=1:12,
                       Rainfall=c(1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.16,1.16),
                       ET=c(1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38))
 
-usethis::use_data(casedat,internal=F)
+usethis::use_data(casedat,internal=F,overwrite=T)
