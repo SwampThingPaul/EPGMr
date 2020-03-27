@@ -8,7 +8,7 @@
 0 errors | 3 warnings | 3 notes
 
 ### devtools::check_rhub()
-# errors | # warnings | # notes
+1 errors | 3 warnings | 5 notes
 
 ### devtools::check_win_devel()
 Status:
