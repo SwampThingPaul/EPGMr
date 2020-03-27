@@ -2,3 +2,8 @@
 ^doc$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^README.rmd
+^\README_files
+^\data-raw
+^package_construction.R
+^working.R
