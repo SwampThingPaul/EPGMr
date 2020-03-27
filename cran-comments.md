@@ -5,14 +5,10 @@
 ## R CMD check results
 
 ### devtools::check() locally:
-0 errors | 3 warnings | 3 notes
+0 errors | 1 warnings | 2 notes
 
 ### devtools::check_rhub()
-1 errors | 3 warnings | 5 notes
+1 errors | 1 warnings | 4 notes
 
 ### devtools::check_win_devel()
-Status:
-
-## Downstream dependencies
-* `NULL`
-
+1 errors | 2 warnings | 3 notes

@@ -49,6 +49,8 @@ EPGMProfile(
 
 \item{Soil.TPConc.initial}{The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).}
 
+\item{Vertical.SoilTPGradient.initial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
+
 \item{Soil.BulkDensity.final}{The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
 
 \item{PSettlingRate}{The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).}
@@ -74,8 +76,6 @@ EPGMProfile(
 \item{results.table}{if \code{TRUE} summary results table will be printed in the console. Default is set to \code{TRUE}.}
 
 \item{summary.distance}{Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.}
-
-\item{Vertical.soilTPGradient.initial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
 }
 \value{
 This function computes and plots the distance profile along the gradient based on input values

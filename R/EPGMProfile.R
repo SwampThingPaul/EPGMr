@@ -15,7 +15,7 @@
 #' @param Soil.Depth Depth of soil (in centimeters).
 #' @param Soil.BulkDensity.initial The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
 #' @param Soil.TPConc.initial The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).
-#' @param Vertical.soilTPGradient.initial The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).
+#' @param Vertical.SoilTPGradient.initial The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).
 #' @param Soil.BulkDensity.final The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
 #' @param PSettlingRate The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).
 #' @param P.AtmoDep Phosphorus atmospheric depostition loading rate (in mg m\out{<sup>-2</sup>} Year\out{<sup>-1</sup>}).
@@ -32,6 +32,12 @@
 #' @keywords "water quality"
 #' @export
 #' @return This function computes and plots the distance profile along the gradient based on input values
+
+#' @importFrom grDevices colorRampPalette
+#' @importFrom graphics abline layout legend lines mtext par plot text
+#' @importFrom stats aggregate
+#' @importFrom utils data
+
 #' @examples
 #' EPGMProfile(case.no=11)
 #'

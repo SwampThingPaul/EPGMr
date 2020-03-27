@@ -4,13 +4,13 @@
 \name{casedat}
 \alias{casedat}
 \title{casedat}
-\format{This data is from Walker and Kadlec, "A Model for Simulating Phosphorus Concentrations in Waters & Soils Downstream of Everglades Stormwater Treatment Areas", prepared for US Dept of the Interior,  August 1996. available at \url{http://www.wwwalker.net/epgm}
+\format{This data is from Walker and Kadlec, "A Model for Simulating Phosphorus Concentrations in Waters & Soils Downstream of Everglades Stormwater Treatment Areas", prepared for US Dept of the Interior,  August 1996.
 \itemize{
 \item{\code{case.number}}{ Index value unique for each case}
 \item{\code{STA.Name}}{ The name of the Stormwater Treatment Area (STA) where this data originated.}
 \item{\code{Receiving.Area}}{ The area which this STA discharges.}
 \item{\code{Start.Discharge}}{ The year which this particular STA began discharge operations.}
-\item{\code{STA.outflow.TPconc}}{ Outflow total phosphorus concentration (in \out{&mu;}g L\out{<sup>-1</sup>}) for this STA.}
+\item{\code{STA.outflow.TPconc}}{ Outflow total phosphorus concentration (in \out{&mu}g L\out{<sup>-1</sup>}) for this STA.}
 \item{\code{STA.outflow.vol}}{ Annual outflow discharge volume (in x10\out{<sup>3</sup>} Acre-Feet Year\out{<sup>-1</sup>}) for this STA.}
 \item{\code{FlowPath.width}}{ The width of the downstream flow path (in kilometers).}
 \item{\code{Hydroperiod}}{ Average hydroperiod (time above ground surface) of the downstream system (in percent).}

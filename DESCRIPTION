@@ -10,6 +10,11 @@ Description: The model used for Stormwater Treatment Area (STA) design is expand
 License: GPL-3
 Depends:
     R (>= 3.5)
+Imports:
+  grDevices,
+  graphics,
+  stats,
+  utils
 Suggests:
     knitr,
     rmarkdown
