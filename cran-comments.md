@@ -2,7 +2,7 @@
 
 * Local: Windows, R version 3.6.1
 
-## R CMD check results
+## R CMD check results (2020-03-27)
 
 ### devtools::check() locally:
 0 errors | 1 warnings | 2 notes
