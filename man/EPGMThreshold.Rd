@@ -4,10 +4,15 @@
 \alias{EPGMThreshold}
 \title{Threshold Evaluation}
 \usage{
-EPGMThreshold(time.dat, WaterColumn.Thresholds = c(10, 15, 20),
-  Soil.Thresholds = c(500, 600, 1000), cattail.Thresholds = c(5, 20,
-  90), plot.exceed = TRUE, raw.area.output = FALSE,
-  results.area.table = TRUE)
+EPGMThreshold(
+  time.dat,
+  WaterColumn.Thresholds = c(10, 15, 20),
+  Soil.Thresholds = c(500, 600, 1000),
+  cattail.Thresholds = c(5, 20, 90),
+  plot.exceed = TRUE,
+  raw.area.output = FALSE,
+  results.area.table = TRUE
+)
 }
 \arguments{
 \item{time.dat}{a \code{data.frame}, the raw output from EPGMTime (when \code{raw.time.output=TRUE}).}
@@ -36,7 +41,7 @@ This function evaluates results of the EPGM model over a simulated period relati
 As described in the original documentation, the model is designed to simulate marsh enrichment (responses to increasing P load), not recovery (responses to decreasing in load).
 }
 \examples{
-example<-EPGMTime(case.no=11)
+example<-EPGMTime(case.no=11,raw.time.output=TRUE)
 EPGMThreshold(example)
 
 #END

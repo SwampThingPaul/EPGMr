@@ -16,7 +16,7 @@
 #' @export
 #' @return This function computes and plots the distance profile along the gradient based on input values
 #' @examples
-#' example<-EPGMTime(case.no=11)
+#' example<-EPGMTime(case.no=11,raw.time.output=TRUE)
 #' EPGMThreshold(example)
 #'
 #' #END

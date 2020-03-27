@@ -4,20 +4,36 @@
 \alias{EPGMProfile}
 \title{Distance Profile}
 \usage{
-EPGMProfile(case.no = NA, Start.Discharge = NA,
-  STA.outflow.TPconc = NA, STA.outflow.vol = NA, FlowPath.width = NA,
-  Hydroperiod = NA, Soil.Depth = NA, Soil.BulkDensity.inital = NA,
-  Soil.TPConc.inital = NA, Vertical.SoilTPGradient.inital = NA,
-  Soil.BulkDensity.final = NA, PSettlingRate = NA, P.AtmoDep = NA,
-  Rainfall = NA, ET = NA, Yr.Display = 30, Max.Yrs = 200,
-  Max.Dist = 15, Dist.increment.km = 0.1, plot.profile = TRUE,
-  raw.output = FALSE, results.table = TRUE, summary.distance = c(0,
-  0.5, 1, 2, 4, 8, 10))
+EPGMProfile(
+  case.no = NA,
+  Start.Discharge = NA,
+  STA.outflow.TPconc = NA,
+  STA.outflow.vol = NA,
+  FlowPath.width = NA,
+  Hydroperiod = NA,
+  Soil.Depth = NA,
+  Soil.BulkDensity.inital = NA,
+  Soil.TPConc.inital = NA,
+  Vertical.SoilTPGradient.inital = NA,
+  Soil.BulkDensity.final = NA,
+  PSettlingRate = NA,
+  P.AtmoDep = NA,
+  Rainfall = NA,
+  ET = NA,
+  Yr.Display = 30,
+  Max.Yrs = 200,
+  Max.Dist = 15,
+  Dist.increment.km = 0.1,
+  plot.profile = TRUE,
+  raw.output = FALSE,
+  results.table = TRUE,
+  summary.distance = c(0, 0.5, 1, 2, 4, 8, 10)
+)
 }
 \arguments{
 \item{case.no}{Case number from the pre-loaded example data (values ranges from 1 to 12)}
 
-\item{Start.Discharge}{The year of discharge started}
+\item{Start.Discharge}{The year which this particular STA began discharge operations.}
 
 \item{STA.outflow.TPconc}{Outflow total phosphorus concentration (in \out{&mu;}g L\out{<sup>-1</sup>}) for this STA.}
 
@@ -54,8 +70,6 @@ EPGMProfile(case.no = NA, Start.Discharge = NA,
 \item{results.table}{if \code{TRUE} summary results table will be printed in the console. Default is set to \code{TRUE}.}
 
 \item{summary.distance}{Default is \code{c(0,0.5,1,2,4,8,10)} but can be changed. Values determine what distances will be included in the summary table.}
-
-\item{Start.Discharge}{The year which this particular STA began discharge operations.}
 
 \item{Soil.BulkDensity.intial}{The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
 
