@@ -12,9 +12,9 @@ EPGMTime(
   FlowPath.width = NA,
   Hydroperiod = NA,
   Soil.Depth = NA,
-  Soil.BulkDensity.inital = NA,
-  Soil.TPConc.inital = NA,
-  Vertical.SoilTPGradient.inital = NA,
+  Soil.BulkDensity.initial = NA,
+  Soil.TPConc.initial = NA,
+  Vertical.SoilTPGradient.initial = NA,
   Soil.BulkDensity.final = NA,
   PSettlingRate = NA,
   P.AtmoDep = NA,
@@ -46,6 +46,10 @@ EPGMTime(
 
 \item{Soil.Depth}{Depth of soil (in centimeters).}
 
+\item{Soil.BulkDensity.initial}{The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
+
+\item{Soil.TPConc.initial}{The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).}
+
 \item{Soil.BulkDensity.final}{The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
 
 \item{PSettlingRate}{The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).}
@@ -74,11 +78,7 @@ EPGMTime(
 
 \item{results.time.table}{If \code{TRUE} a summary results table will be printed in the console. Default is set to \code{TRUE}.}
 
-\item{Soil.BulkDensity.intial}{The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
-
-\item{Soil.TPConc.intial}{The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).}
-
-\item{Vertical.soilTPGradient.intial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
+\item{Vertical.soilTPGradient.initial}{The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
 }
 \value{
 This function computes and plots the distance profile along the gradient based on input values

@@ -4,7 +4,6 @@
 #'
 #' As described in the original documentation, the model is designed to simulate marsh enrichment (responses to increasing P load), not recovery (responses to decreasing in load).
 #'
-#' @param case.no Case number from the pre-loaded example data (values ranges from 1 to 12)
 #' @param time.dat a \code{data.frame}, the raw output from EPGMTime (when \code{raw.time.output=TRUE}).
 #' @param WaterColumn.Thresholds a list of three water column total phosphorus thresholds to evaluate time output.
 #' @param Soil.Thresholds a list of three soil total phosphorus thresholds to evaluate time output.

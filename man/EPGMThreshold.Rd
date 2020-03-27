@@ -28,8 +28,6 @@ EPGMThreshold(
 \item{raw.area.output}{If \code{TRUE} a \code{data.frame} will be printed with all area exceedances calculated for each time step.Default is set to \code{FALSE}.}
 
 \item{results.area.table}{If \code{TRUE} a summary results table will be printed in the console. Default is set to \code{TRUE}.}
-
-\item{case.no}{Case number from the pre-loaded example data (values ranges from 1 to 12)}
 }
 \value{
 This function computes and plots the distance profile along the gradient based on input values

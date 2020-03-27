@@ -15,9 +15,9 @@
 \item{\code{FlowPath.width}}{ The width of the downstream flow path (in kilometers).}
 \item{\code{Hydroperiod}}{ Average hydroperiod (time above ground surface) of the downstream system (in percent).}
 \item{\code{Soil.Depth}}{ Depth of soil (in centimeters).}
-\item{\code{Soil.BulkDensity.intial}}{ The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
-\item{\code{Soil.TPConc.intial}}{ The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).}
-\item{\code{Vertical.soilTPGradient.intial}}{ The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
+\item{\code{Soil.BulkDensity.initial}}{ The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
+\item{\code{Soil.TPConc.initial}}{ The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).}
+\item{\code{Vertical.soilTPGradient.initial}}{ The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).}
 \item{\code{Soil.BulkDensity.final}}{ The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).}
 \item{\code{PSettlingRate}}{ The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).}
 \item{\code{P.AtmoDep}}{ Phosphorus atmospheric depostition loading rate (in mg m\out{<sup>-2</sup>} Year\out{<sup>-1</sup>}).}

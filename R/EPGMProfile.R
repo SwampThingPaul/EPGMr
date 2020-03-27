@@ -13,15 +13,14 @@
 #' @param FlowPath.width The width of the downstream flow path (in kilometers).
 #' @param Hydroperiod Average hydroperiod (time above ground surface) of the downstream system (in percent).
 #' @param Soil.Depth Depth of soil (in centimeters).
-#' @param Soil.BulkDensity.intial The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
-#' @param Soil.TPConc.intial The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).
-#' @param Vertical.soilTPGradient.intial The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).
+#' @param Soil.BulkDensity.initial The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
+#' @param Soil.TPConc.initial The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).
+#' @param Vertical.soilTPGradient.initial The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).
 #' @param Soil.BulkDensity.final The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
 #' @param PSettlingRate The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).
 #' @param P.AtmoDep Phosphorus atmospheric depostition loading rate (in mg m\out{<sup>-2</sup>} Year\out{<sup>-1</sup>}).
 #' @param Rainfall Annual accumulated rainfall estimate (m Year\out{<sup>-1</sup>}).
 #' @param ET Annual evapotranspiration estimate (m Year\out{<sup>-1</sup>}).
-#' @param Dist.Display Output display result for this distance
 #' @param Yr.Display Output displays results for this time (years)
 #' @param Max.Yrs Maximum number of years simulated
 #' @param Max.Dist Maximum ditance plotted, default is 50 km
@@ -46,9 +45,9 @@ STA.outflow.vol=NA,
 FlowPath.width=NA,
 Hydroperiod=NA,
 Soil.Depth=NA,
-Soil.BulkDensity.inital=NA,
-Soil.TPConc.inital=NA,
-Vertical.SoilTPGradient.inital=NA,
+Soil.BulkDensity.initial=NA,
+Soil.TPConc.initial=NA,
+Vertical.SoilTPGradient.initial=NA,
 Soil.BulkDensity.final=NA,
 PSettlingRate=NA,
 P.AtmoDep=NA,
@@ -66,8 +65,8 @@ summary.distance=c(0,0.5,1,2,4,8,10)
 
   ## Stop/warning section of the function
   input.val.na<-sum(c(is.na(Start.Discharge),is.na(STA.outflow.TPconc),is.na(STA.outflow.vol),is.na(FlowPath.width),
-                     is.na(Hydroperiod),is.na(Soil.Depth),is.na(Soil.BulkDensity.inital),is.na(Soil.TPConc.inital),
-                     is.na(Vertical.SoilTPGradient.inital),is.na(Soil.BulkDensity.final),is.na(PSettlingRate),
+                     is.na(Hydroperiod),is.na(Soil.Depth),is.na(Soil.BulkDensity.initial),is.na(Soil.TPConc.initial),
+                     is.na(Vertical.SoilTPGradient.initial),is.na(Soil.BulkDensity.final),is.na(PSettlingRate),
                      is.na(P.AtmoDep),is.na(ET)))
   summary.distance<-summary.distance
   if(is.na(case.no)==TRUE & input.val.na>1){
@@ -102,9 +101,9 @@ summary.distance=c(0,0.5,1,2,4,8,10)
     path.width.km<-FlowPath.width
     hydroperiod.per<-Hydroperiod/100
     soil.z.cm<-Soil.Depth
-    bd.i.gcc<-Soil.BulkDensity.inital
-    soilP.i.mgkg<-Soil.TPConc.inital
-    soilPgrad.i.mgcccm<-Vertical.SoilTPGradient.inital
+    bd.i.gcc<-Soil.BulkDensity.initial
+    soilP.i.mgkg<-Soil.TPConc.initial
+    soilPgrad.i.mgcccm<-Vertical.SoilTPGradient.initial
     bd.f.gcc<-Soil.BulkDensity.final
     Psettle.myr<-PSettlingRate
     atmoP.mgm2yr<-P.AtmoDep
@@ -117,9 +116,9 @@ summary.distance=c(0,0.5,1,2,4,8,10)
     path.width.km<-cases.dat[cases.dat$case.number==case.no,"FlowPath.width"]
     hydroperiod.per<-cases.dat[cases.dat$case.number==case.no,"Hydroperiod"]/100
     soil.z.cm<-cases.dat[cases.dat$case.number==case.no,"Soil.Depth"]
-    bd.i.gcc<-cases.dat[cases.dat$case.number==case.no,"Soil.BulkDensity.inital"]
-    soilP.i.mgkg<-cases.dat[cases.dat$case.number==case.no,"Soil.TPConc.inital"]
-    soilPgrad.i.mgcccm<-cases.dat[cases.dat$case.number==case.no,"Vertical.SoilTPGradient.inital"]
+    bd.i.gcc<-cases.dat[cases.dat$case.number==case.no,"Soil.BulkDensity.initial"]
+    soilP.i.mgkg<-cases.dat[cases.dat$case.number==case.no,"Soil.TPConc.initial"]
+    soilPgrad.i.mgcccm<-cases.dat[cases.dat$case.number==case.no,"Vertical.SoilTPGradient.initial"]
     bd.f.gcc<-cases.dat[cases.dat$case.number==case.no,"Soil.BulkDensity.final"]
     Psettle.myr<-cases.dat[cases.dat$case.number==case.no,"PSettlingRate"]
     atmoP.mgm2yr<-cases.dat[cases.dat$case.number==case.no,"P.AtmoDep"]
