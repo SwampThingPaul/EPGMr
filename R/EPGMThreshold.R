@@ -4,13 +4,13 @@
 #'
 #' As described in the original documentation, the model is designed to simulate marsh enrichment (responses to increasing P load), not recovery (responses to decreasing in load).
 #'
-#' @param time.dat a \code{data.frame}, the raw output from EPGMTime (when \code{raw.time.output=TRUE}).
+#' @param time.dat a `data.frame`, the raw output from EPGMTime (when `raw.time.output=TRUE`).
 #' @param WaterColumn.Thresholds a list of three water column total phosphorus thresholds to evaluate time output.
 #' @param Soil.Thresholds a list of three soil total phosphorus thresholds to evaluate time output.
 #' @param cattail.Thresholds a list of three cattail density thresholds to evaluate time output.
-#' @param plot.exceed If \code{TRUE} base plot will be generate with water column, soil and cattail area exceeded plots.
-#' @param raw.area.output If \code{TRUE} a \code{data.frame} will be printed with all area exceedances calculated for each time step.Default is set to \code{FALSE}.
-#' @param results.area.table If \code{TRUE} a summary results table will be printed in the console. Default is set to \code{TRUE}.
+#' @param plot.exceed If `TRUE` base plot will be generate with water column, soil and cattail area exceeded plots.
+#' @param raw.area.output If `TRUE` a `data.frame` will be printed with all area exceedances calculated for each time step.Default is set to `FALSE`.
+#' @param results.area.table If `TRUE` a summary results table will be printed in the console. Default is set to `TRUE`.
 #' @keywords "water quality"
 #' @export
 #' @return This function computes and plots the distance profile along the gradient based on input values

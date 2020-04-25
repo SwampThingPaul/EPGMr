@@ -2,13 +2,27 @@
 
 * Local: Windows, R version 3.6.1
 
-## R CMD check results (2020-03-27)
+## R CMD check results (2020-04-25)
 
 ### devtools::check() locally:
-0 errors | 1 warnings | 2 notes
+0 errors | 0 warnings | 0 notes
 
 ### devtools::check_rhub()
-1 errors | 1 warnings | 4 notes
+0 errors | 0 warnings | 1 notes
+
+NOTES:
+```
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Paul Julian <pauljulianphd@gmail.com>’
+
+New submission
+
+Possibly mis-spelled words in DESCRIPTION:
+  EPGM (9:151)
+  Stormwater (9:33)
+
+Package has a VignetteBuilder field but no prebuilt vignette index.
+```
 
 ### devtools::check_win_devel()
-1 errors | 2 warnings | 3 notes
+0 errors | 0 warnings | 1 notes

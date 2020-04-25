@@ -164,24 +164,24 @@ gradient within the Everglades ecosystem.
 t(casedat[casedat$case.number==11,])
 ```
 
-    ##                                11       
-    ## case.number                    "11"     
-    ## STA.Name                       "S10s"   
-    ## Receiving.Area                 "NE 2A"  
-    ## Start.Discharge                "1962"   
-    ## STA.outflow.TPconc             "122"    
-    ## STA.outflow.vol                "281.3"  
-    ## FlowPath.width                 "10.5"   
-    ## Hydroperiod                    "91.4"   
-    ## Soil.Depth                     "10"     
-    ## Soil.BulkDensity.inital        "0.102"  
-    ## Soil.TPConc.inital             "198"    
-    ## Vertical.SoilTPGradient.inital "-0.0018"
-    ## Soil.BulkDensity.final         "0.08"   
-    ## PSettlingRate                  "10.2"   
-    ## P.AtmoDep                      "42.9"   
-    ## Rainfall                       "1.16"   
-    ## ET                             "1.38"
+    ##                                 11       
+    ## case.number                     "11"     
+    ## STA.Name                        "S10s"   
+    ## Receiving.Area                  "NE 2A"  
+    ## Start.Discharge                 "1962"   
+    ## STA.outflow.TPconc              "122"    
+    ## STA.outflow.vol                 "281.3"  
+    ## FlowPath.width                  "10.5"   
+    ## Hydroperiod                     "91.4"   
+    ## Soil.Depth                      "10"     
+    ## Soil.BulkDensity.initial        "0.102"  
+    ## Soil.TPConc.initial             "198"    
+    ## Vertical.SoilTPGradient.initial "-0.0018"
+    ## Soil.BulkDensity.final          "0.08"   
+    ## PSettlingRate                   "10.2"   
+    ## P.AtmoDep                       "42.9"   
+    ## Rainfall                        "1.16"   
+    ## ET                              "1.38"
 
 `EPGMr` is broken into three functions.
 
@@ -222,7 +222,7 @@ the simulation period (default is 30 years).
 EPGMProfile(case.no=11,plot.profile=TRUE,summary.distance=c(0,1,2,4,10))
 ```
 
-<img src="README_files/figure-gfm/DistanceProfilePlot-1.png" style="display: block; margin: auto;" />
+<img src="README-DistanceProfilePlot-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30
@@ -298,7 +298,7 @@ in the console and/or saved as an object. This will results in a
 EPGMTime(case.no=11)
 ```
 
-![](README_files/figure-gfm/TimeProfilePlot-1.png)<!-- -->
+![](README-TimeProfilePlot-1.png)<!-- -->
 
     ## $Time.yrs
     ## [1] 200
@@ -345,7 +345,7 @@ example<-EPGMTime(case.no=11,raw.time.output=TRUE,plot.profile=FALSE)
 EPGMThreshold(example)
 ```
 
-![](README_files/figure-gfm/ThresholdPlot-1.png)<!-- -->
+![](README-ThresholdPlot-1.png)<!-- -->
 
     ## $TotalArea.km2
     ## [1] 157.5
@@ -421,9 +421,9 @@ EPGMProfile(
   FlowPath.width = FP.width,
   Hydroperiod = HP.per, 
   Soil.Depth = Soil.z, 
-  Soil.BulkDensity.inital = Soil.BDi,
-  Soil.TPConc.inital = Soil.TPi, 
-  Vertical.SoilTPGradient.inital = TPGradient.i,
+  Soil.BulkDensity.initial = Soil.BDi,
+  Soil.TPConc.initial = Soil.TPi, 
+  Vertical.SoilTPGradient.initial = TPGradient.i,
   Soil.BulkDensity.final = Soil.BDf, 
   PSettlingRate = k, 
   P.AtmoDep = P.dep,
@@ -431,7 +431,7 @@ EPGMProfile(
   summary.distance=c(0,1,5,10))
 ```
 
-<img src="README_files/figure-gfm/DistanceProfilePlot_user-1.png" style="display: block; margin: auto;" />
+<img src="README-DistanceProfilePlot_user-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30
@@ -525,7 +525,7 @@ EPGMProfile(
     ## 1, 5, 10), : Can't have raw.output and results.table, You
     ## can't have your cake and eat it too.
 
-<img src="README_files/figure-gfm/ProfilePlot_witherror-1.png" style="display: block; margin: auto;" />
+<img src="README-ProfilePlot_witherror-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30

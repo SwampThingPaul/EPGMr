@@ -6,7 +6,10 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.path="README-"
+  )
 #devtools::install_github("GuangchuangYu/badger")
 library(EPGMr)
 library(rmarkdown)
@@ -175,9 +178,9 @@ EPGMProfile(
   FlowPath.width = FP.width,
   Hydroperiod = HP.per, 
   Soil.Depth = Soil.z, 
-  Soil.BulkDensity.inital = Soil.BDi,
-  Soil.TPConc.inital = Soil.TPi, 
-  Vertical.SoilTPGradient.inital = TPGradient.i,
+  Soil.BulkDensity.initial = Soil.BDi,
+  Soil.TPConc.initial = Soil.TPi, 
+  Vertical.SoilTPGradient.initial = TPGradient.i,
   Soil.BulkDensity.final = Soil.BDf, 
   PSettlingRate = k, 
   P.AtmoDep = P.dep,

@@ -8,28 +8,28 @@
 #' @param case.no Case number from the pre-loaded example data (values ranges from 1 to 12)
 #' @param Start.Discharge The year of discharge started
 #' @param Start.Discharge The year which this particular STA began discharge operations.
-#' @param STA.outflow.TPconc Outflow total phosphorus concentration (in \out{&mu;}g L\out{<sup>-1</sup>}) for this STA.
-#' @param STA.outflow.vol Annual outflow discharge volume (in x10\out{<sup>3</sup>} Acre-Feet Year\out{<sup>-1</sup>}) for this STA.
+#' @param STA.outflow.TPconc Outflow total phosphorus concentration (in ug L-1; micrograms per liter) for this STA.
+#' @param STA.outflow.vol Annual outflow discharge volume (in x1000 Acre-Feet Year-1) for this STA.
 #' @param FlowPath.width The width of the downstream flow path (in kilometers).
 #' @param Hydroperiod Average hydroperiod (time above ground surface) of the downstream system (in percent).
 #' @param Soil.Depth Depth of soil (in centimeters).
-#' @param Soil.BulkDensity.initial The initial bulk density prior to dicharge of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
-#' @param Soil.TPConc.initial The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg\out{<sup>-1</sup>}).
-#' @param Vertical.SoilTPGradient.initial The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm\out{<sup>-3</sup>} cm\out{<sup>-1</sup>}).
-#' @param Soil.BulkDensity.final The final bulk density after dischage of the soil downstream of the system (in g cm\out{<sup>-3</sup>}).
-#' @param PSettlingRate The phosphorus settling rate estimated from steady-state conditions (m Year\out{<sup>-1</sup>}).
-#' @param P.AtmoDep Phosphorus atmospheric depostition loading rate (in mg m\out{<sup>-2</sup>} Year\out{<sup>-1</sup>}).
-#' @param Rainfall Annual accumulated rainfall estimate (m Year\out{<sup>-1</sup>}).
-#' @param ET Annual evapotranspiration estimate (m Year\out{<sup>-1</sup>}).
+#' @param Soil.BulkDensity.initial The initial bulk density prior to dicharge of the soil downstream of the system (in g cm-3).
+#' @param Soil.TPConc.initial The initial total phosphorus concentration of soil prior to discharge downstream of the system (in mg kg-1).
+#' @param Vertical.SoilTPGradient.initial The soil total phosphorus concentration gradient prior to dischage downstream of the system (in mg cm-3 cm-1).
+#' @param Soil.BulkDensity.final The final bulk density after dischage of the soil downstream of the system (in g cm-3).
+#' @param PSettlingRate The phosphorus settling rate estimated from steady-state conditions (m Year-1).
+#' @param P.AtmoDep Phosphorus atmospheric depostition loading rate (in mg m-2 Year-1).
+#' @param Rainfall Annual accumulated rainfall estimate (m Year-1).
+#' @param ET Annual evapotranspiration estimate (m Year-1).
 #' @param Dist.Display Output display result for this distance
-#' @param Dist.slice A list of distances to disply parameters in a time series plot if \code{plot.profile} is \code{TRUE}.
+#' @param Dist.slice A list of distances to disply parameters in a time series plot if `plot.profile` is `TRUE`.
 #' @param Max.Yrs Maximum number of years simulated
 #' @param Max.Dist Maximum ditance plotted, default is 50 km
 #' @param Time.increment.yr Year increment to be modeled
 #' @param Dist.increment.km Distance increment modeled
-#' @param plot.profile If \code{TRUE} base plot will be generate with water column distance, soil distance and cattail distance profiles.
-#' @param raw.time.output If \code{TRUE} a \code{data.frame} will be printed with all calculations used to estimate various parameters.Default is set to \code{FALSE}.
-#' @param results.time.table If \code{TRUE} a summary results table will be printed in the console. Default is set to \code{TRUE}.
+#' @param plot.profile If `TRUE` base plot will be generate with water column distance, soil distance and cattail distance profiles.
+#' @param raw.time.output If `TRUE` a `data.frame` will be printed with all calculations used to estimate various parameters.Default is set to `FALSE`.
+#' @param results.time.table If `TRUE` a summary results table will be printed in the console. Default is set to `TRUE`.
 #' @keywords "water quality"
 #' @export
 #' @return This function computes and plots the distance profile along the gradient based on input values
@@ -80,8 +80,25 @@ EPGMTime=function(case.no=NA,
 
   ## Data handling
   if(is.na(case.no)==F){
-    data(casedat)
-    cases.dat<-casedat}
+    cases.dat<-data.frame(case.number=1:12,
+                        STA.Name=c("STA2","STA34","STA5","STA6","STA2",'STA34',"STA5","STA6","STA2GDR","STA2GDR","S10s","S10s"),
+                        Receiving.Area=c("NW 2A","NE 3A","Rotenb","NW 3A","NW 2A","NE 3A","Rotenb","NW 3A","NW 2A","NW 2A","NE 2A","NE 2A"),
+                        Start.Discharge=c(1999,2003,1999,1999,1999,2003,1999,1999,1999,1999,1962,1962),
+                        STA.outflow.TPconc=c(50,50,100,50,50,50,50,50,40,40,122,122),
+                        STA.outflow.vol=c(205.8,422.0,60.0,64.4,205.8,422.0,30.7,64.4,246.7,246.7,281.3,281.3),
+                        FlowPath.width=c(12.1,14.2,3,6,12.1,14.2,3,6,12.1,12.1,10.5,10.5),
+                        Hydroperiod=c(90,88,69,61,92,88,69,61,92,92,91.4,91.4),
+                        Soil.Depth=c(10,10,10,10,20,20,20,20,10,20,10,20),
+                        Soil.BulkDensity.initial=c(0.080,0.179,0.197,0.222,0.071,0.176,0.197,0.232,0.080,0.071,0.102,0.102),
+                        Soil.TPConc.initial=c(500,463,508,467,366,358,376,330,442,366,198,198),
+                        Vertical.SoilTPGradient.initial=c(-0.0018,-0.0039,-0.0052,-0.0054,-0.0018,-0.0039,-0.0052,-0.0054,-0.0018,-0.0018,-0.0018,-0.0018),
+                        Soil.BulkDensity.final=c(0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08),
+                        PSettlingRate=c(10.2,10.2,10.2,10.2,10.2,10.2,10.2,10.2,10.2,10.2,10.2,10.2),
+                        P.AtmoDep=c(42.9,42.9,42.9,42.9,42.9,42.9,42.9,42.9,42.9,42.9,42.9,42.9),
+                        Rainfall=c(1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.23,1.16,1.16),
+                        ET=c(1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38,1.38))
+
+    }
 
   if(is.na(case.no)==T){
     start.year<-Start.Discharge
