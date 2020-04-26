@@ -7,7 +7,7 @@ output:
     toc: true
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{Getting started with EPGMr}
+  %\VignetteIndexEntry{getting_started}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 editor_options: 
@@ -26,8 +26,8 @@ library(knitr)
 
 Everglades Phosphorus Gradient Model (EPGM; Fig. 1) predicts variations in water-column phosphorus (P) concentration, peat accretion rate, and soil P concentration along a horizontal gradient imposed by an external P load and sheet-flow conditions. Cattail densities and total areas are predicted based upon correlations with soil P and are surrogates for impacts on ecosystem components which respond to soil P variations in similar concentration ranges. The model is calibrated to soil and vegetation data from Water Conservation Area - 2 (WCA-2; primarily), WCA-1, and WCA-3A. The model successfully simulates observed longitudinal gradients in soil P concentration below the S10 structures in WCA-2A after ~28 years of external P loading (1962 to 1990). Observed expansion of cattail populations in this region between 1973 and 1991 is also simulated, though somewhat over-predicted during the first 20 years. Model results suggest a linear relationship between marsh water-column and soil P concentrations over long time scales. Estimated soil response times range from 20 to 40 years, depending on soil depth, and are inversely related to water-column concentration.
 
-```{r figs, out.width="90%",echo=FALSE,fig.align="center",fig.cap="**Figure 1:** Generalized model structure of the Everglades Phosphorus Gradient Model as originally developed by Walker and Kadlec. The model embodies water and phosphorus mass conservation specific to wetland ecosystems designed for phosphorus management."}
-#knitr::include_graphics("..\img\epgmpic.gif")
+```{r figs, out.width="80%",echo=FALSE,fig.align="center",fig.cap="**Figure 1:** Generalized model structure of the Everglades Phosphorus Gradient Model as originally developed by Walker and Kadlec. The model embodies water and phosphorus mass conservation specific to wetland ecosystems designed for phosphorus management."}
+knitr::include_graphics("./img/epgmpic.gif")
 ```
 
 # Citing EPGMr

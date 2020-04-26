@@ -222,7 +222,7 @@ the simulation period (default is 30 years).
 EPGMProfile(case.no=11,plot.profile=TRUE,summary.distance=c(0,1,2,4,10))
 ```
 
-<img src="README-DistanceProfilePlot-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-DistanceProfilePlot-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30
@@ -298,7 +298,7 @@ in the console and/or saved as an object. This will results in a
 EPGMTime(case.no=11)
 ```
 
-![](README-TimeProfilePlot-1.png)<!-- -->
+![](man/figures/README-TimeProfilePlot-1.png)<!-- -->
 
     ## $Time.yrs
     ## [1] 200
@@ -345,7 +345,7 @@ example<-EPGMTime(case.no=11,raw.time.output=TRUE,plot.profile=FALSE)
 EPGMThreshold(example)
 ```
 
-![](README-ThresholdPlot-1.png)<!-- -->
+![](man/figures/README-ThresholdPlot-1.png)<!-- -->
 
     ## $TotalArea.km2
     ## [1] 157.5
@@ -431,7 +431,7 @@ EPGMProfile(
   summary.distance=c(0,1,5,10))
 ```
 
-<img src="README-DistanceProfilePlot_user-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-DistanceProfilePlot_user-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30
@@ -525,7 +525,7 @@ EPGMProfile(
     ## 1, 5, 10), : Can't have raw.output and results.table, You
     ## can't have your cake and eat it too.
 
-<img src="README-ProfilePlot_witherror-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-ProfilePlot_witherror-1.png" style="display: block; margin: auto;" />
 
     ## $Time.yrs
     ## [1] 30

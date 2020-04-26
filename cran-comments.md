@@ -11,17 +11,11 @@
 0 errors | 0 warnings | 1 notes
 
 NOTES:
+removed vignittes in the build (by adding to `.Rbuildignore`) and removed `VignetteBuilder: knitr` in the `DESCRIPTION` field.
+
 ```
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: ‘Paul Julian <pauljulianphd@gmail.com>’
-
-New submission
-
-Possibly mis-spelled words in DESCRIPTION:
-  EPGM (9:151)
-  Stormwater (9:33)
-
-Package has a VignetteBuilder field but no prebuilt vignette index.
+  Maintainer: 'Paul Julian <pauljulianphd@gmail.com>'
+  New submission
 ```
 
 ### devtools::check_win_devel()

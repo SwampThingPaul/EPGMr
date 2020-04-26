@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Implementation of the Everglades Phosphorus Gradient Model in R">
-<meta property="og:description" content="The model used for Storm water Treatment Area (STA) design is expanded to include mass balances on marsh water-columns and surface soils. Everglades Phosphorus Gradient Model (EPGM) predicts variations in water-column P concentration, peat accretion rate, and soil P concentration along a horizontal gradient imposed by an external phosphorus load and sheet-flow conditions. Potential biological responses are expressed in terms of marsh surface area exceeding threshold criteria for water-column and soil phosphorus concentrations. More information of the model can be found at &lt;http://www.wwwalker.net/epgm/&gt;.">
+<meta property="og:description" content="Everglades Phosphorus Gradient Model predicts variations in water-column P concentration, peat accretion rate, and soil P concentration along a horizontal gradient imposed by an external phosphorus load and sheet-flow conditions. Potential biological responses are expressed in terms of marsh surface area exceeding threshold criteria for water-column and soil phosphorus concentrations. More information of the model can be found at &lt;http://www.wwwalker.net/epgm/&gt;.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -241,7 +241,7 @@ Submit to <a href="https://cran.r-project.org/submit.html">CRAN</a>.</li>
 <p><em>Distance Profile</em><a name="profile"></a></p>
 <p>This will run the example case number 11, plot the distance profile depicited below and provide a summary results table. If <code>raw.output</code> was set to <code>TRUE</code>, the raw data behind the plots and summary tables would be printed in the console. If <code>results.table</code> was set to <code>TRUE</code> then a summary results table will be printed (default). The results output table under <code>$DistanceProfile</code> provides a summary of the simulation period at several user input distances, however the default argument in the function is <code>summary.distance=c(0,0.5,1,2,4,8,10)</code>. Other information in the summary result tab include, simulation inputs, water budget, phosphorus mass balance and information on regarding soils for the simulation period (default is 30 years).</p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="reference/EPGMProfile.html">EPGMProfile</a></span>(<span class="kw">case.no</span><span class="kw">=</span><span class="fl">11</span>,<span class="kw">plot.profile</span><span class="kw">=</span><span class="fl">TRUE</span>,<span class="kw">summary.distance</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">10</span>))</pre></div>
-<p><img src="README-DistanceProfilePlot-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-DistanceProfilePlot-1.png" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">## $Time.yrs</span></a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="co">## [1] 30</span></a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="co">## </span></a>
@@ -305,7 +305,7 @@ Submit to <a href="https://cran.r-project.org/submit.html">CRAN</a>.</li>
 <p><em>Time Profile</em><a name="time"></a></p>
 <p>This function will run the EPGM model over a determined period of time (with specificied time increment). If <code>raw.time.output</code> is set to <code>TRUE</code>, the raw data behind the plots and summary tables will be printed in the console and/or saved as an object. This will results in a <code>data.frame</code> with data specific to space (i.e. distance) and time (i.e. year).</p>
 <div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="reference/EPGMTime.html">EPGMTime</a></span>(<span class="kw">case.no</span><span class="kw">=</span><span class="fl">11</span>)</pre></div>
-<p><img src="README-TimeProfilePlot-1.png"><!-- --></p>
+<p><img src="reference/figures/README-TimeProfilePlot-1.png"><!-- --></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">## $Time.yrs</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="co">## [1] 200</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="co">## </span></a>
@@ -338,7 +338,7 @@ Submit to <a href="https://cran.r-project.org/submit.html">CRAN</a>.</li>
 <p><em>Threshold Evaluation</em><a name="threshold"></a></p>
 <p>This function will calculate, summarise and plot area exceedance for results from <code><a href="reference/EPGMTime.html">EPGMTime()</a></code>. Currently the function is configured to evaluate three threshold for water column, soil and cattail density within the modelled flow-path. Much like the other functions, If <code>raw.area.output</code> is set to <code>TRUE</code>, then the raw results summarized in the summary table and plots will be provided as a <code>data.frame</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="r">example</pre></div>
-<p><img src="README-ThresholdPlot-1.png"><!-- --></p>
+<p><img src="reference/figures/README-ThresholdPlot-1.png"><!-- --></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">## $TotalArea.km2</span></a>
 <a class="sourceLine" id="cb12-2" title="2"><span class="co">## [1] 157.5</span></a>
 <a class="sourceLine" id="cb12-3" title="3"><span class="co">## </span></a>
@@ -387,7 +387,7 @@ Submit to <a href="https://cran.r-project.org/submit.html">CRAN</a>.</li>
 <p>Below is an example of the <code>EPGMProfile</code> function with user input data rather than case specific data.</p>
 <div class="sourceCode" id="cb13"><pre class="r">#User defined inputs
 Discharge.Yr </pre></div>
-<p><img src="README-DistanceProfilePlot_user-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-DistanceProfilePlot_user-1.png" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co">## $Time.yrs</span></a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="co">## [1] 30</span></a>
 <a class="sourceLine" id="cb14-3" title="3"><span class="co">## </span></a>
@@ -469,7 +469,7 @@ Discharge.Yr </pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co">## Warning in EPGMProfile(case.no = 11, summary.distance = c(0,</span></a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="co">## 1, 5, 10), : Can't have raw.output and results.table, You</span></a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="co">## can't have your cake and eat it too.</span></a></code></pre></div>
-<p><img src="README-ProfilePlot_witherror-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-ProfilePlot_witherror-1.png" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co">## $Time.yrs</span></a>
 <a class="sourceLine" id="cb19-2" title="2"><span class="co">## [1] 30</span></a>
 <a class="sourceLine" id="cb19-3" title="3"><span class="co">## </span></a>
