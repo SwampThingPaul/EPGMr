@@ -262,6 +262,9 @@ summary.distance=c(0,0.5,1,2,4,8,10)
                           cattail.time.per=cattail.time.per)
   if(plot.profile==TRUE){
     #Graphs_Profile plots
+    oldpar<- par(no.readonly = TRUE)
+    on.exit(par(oldpar))
+
     par(family="serif",mar=c(3.25,4,2,2),oma=c(1,1,1,1),mgp=c(2.25,0.5,0));
     layout(matrix(1:4,2,2))
 

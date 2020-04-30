@@ -169,6 +169,9 @@ EPGMTime=function(case.no=NA,
 
   if(plot.profile==TRUE){
     #Graphs_Profile plots
+    oldpar<- par(no.readonly = TRUE)
+    on.exit(par(oldpar))
+
     par(family="serif",mar=c(1.75,4,2,2),oma=c(1,1,1,1),mgp=c(2.5,0.5,0));
     layout(matrix(1:6,2,3,byrow=T),widths=c(1,0.4,1))
     time.dat.plot<-time.dat[time.dat$dist==Dist.Display,]

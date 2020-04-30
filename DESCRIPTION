@@ -1,6 +1,6 @@
 Package: EPGMr
 Type: Package
-Title: Implementation of the Everglades Phosphorus Gradient Model in R
+Title: Implementation of the Everglades Phosphorus Gradient Model
 Version: 1.0.0
 Date: 2020-03-27
 Authors@R: c(person("Paul","Julian",role=c("aut","cre"),email="pauljulianphd@gmail.com"))

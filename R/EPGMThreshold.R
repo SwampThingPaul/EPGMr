@@ -127,6 +127,10 @@ EPGMThreshold=function(time.dat,
 
   if(plot.exceed==TRUE){
     cols<-colorRampPalette(c("#3B9AB2", "#78B7C5", "#EBCC2A", "#E1AF00", "#F21A00"))(3)
+
+    oldpar<- par(no.readonly = TRUE)
+    on.exit(par(oldpar))
+
     par(family="serif",mar=c(1.75,4,2,2),oma=c(2,1,1,1),mgp=c(2.25,0.5,0));
     layout(matrix(1:6,3,2,byrow=T),widths=c(1,0.5))
 
