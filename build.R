@@ -18,4 +18,4 @@ pkgdown::build_site()
 
 
 ##
-# devtools::build()
+ devtools::build()

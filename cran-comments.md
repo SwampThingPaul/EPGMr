@@ -39,3 +39,11 @@ If you're not familiar with the function, please check ?on.exit. This function m
 Please fix and resubmit.
 
 ```
+
+```
+  The Date field is over a month old
+```
+
+Notes upon re-submission
+This is a re-submission. Based on comments from reviewer "in R" was removed from the description file, on.exit(...) was added to restore user's options and date in DESCRIPTION files was updated.
+
