@@ -3,6 +3,8 @@ EPGMr
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
 
+[![CRAN](https://www.r-pkg.org/badges/version/EPGMr)](https://cran.r-project.org/web/packages/EPGMr/)
+
 **Contact Info:** [Webpage](http://swampthingecology.org) -
 [Twitter](https://twitter.com/SwampThingPaul) -
 [Email](mailto:pauljulianphd@gmail.com)
@@ -39,7 +41,13 @@ EPGMr
     [Link](https://github.com/ropensci/software-review/issues/365)~~
   - [ ] ~~Submit to [rOpenSci](https://ropensci.org/) for community
     peer-review.~~
-  - [ ] Submit to [CRAN](https://cran.r-project.org/submit.html).
+  - [x] Submit to [CRAN](https://cran.r-project.org/submit.html),
+    [EPGMr](https://cran.r-project.org/web/packages/EPGMr/).
+
+### Version 2.0 planning
+
+  - [ ] optimize functionality
+  - [ ] expand functionality to include soil depth profile model.
 
 -----
 
