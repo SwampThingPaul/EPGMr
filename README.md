@@ -2,8 +2,8 @@ EPGMr
 ================
 
 [![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
-
 [![CRAN](https://www.r-pkg.org/badges/version/EPGMr)](https://cran.r-project.org/web/packages/EPGMr/)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/EPGMr?color=blue)](https://cran.r-project.org/package=EPGMr)
 
 **Contact Info:** [Webpage](http://swampthingecology.org) -
 [Twitter](https://twitter.com/SwampThingPaul) -

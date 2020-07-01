@@ -18,9 +18,7 @@ options(width=60)
 library(knitr)
 ```
 
-[![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925)
-
-[![CRAN](https://www.r-pkg.org/badges/version/EPGMr)](https://cran.r-project.org/web/packages/EPGMr/)
+[![DOI](https://zenodo.org/badge/234599925.svg)](https://zenodo.org/badge/latestdoi/234599925) [![CRAN](https://www.r-pkg.org/badges/version/EPGMr)](https://cran.r-project.org/web/packages/EPGMr/) `r badger::badge_cran_download("EPGMr", "grand-total", "blue")`
 
 __Contact Info:__  [Webpage](http://swampthingecology.org) - [Twitter](https://twitter.com/SwampThingPaul) - [Email](mailto:pauljulianphd@gmail.com)
 
