@@ -4,7 +4,8 @@
 \name{casedat}
 \alias{casedat}
 \title{casedat}
-\format{This data is from Walker and Kadlec, "A Model for Simulating Phosphorus Concentrations in Waters & Soils Downstream of Everglades Stormwater Treatment Areas", prepared for US Dept of the Interior,  August 1996.
+\format{
+This data is from Walker and Kadlec, "A Model for Simulating Phosphorus Concentrations in Waters & Soils Downstream of Everglades Stormwater Treatment Areas", prepared for US Dept of the Interior,  August 1996.
 \itemize{
 \item{\code{case.number}}{ Index value unique for each case}
 \item{\code{STA.Name}}{ The name of the Stormwater Treatment Area (STA) where this data originated.}
@@ -23,7 +24,8 @@
 \item{\code{P.AtmoDep}}{ Phosphorus atmospheric depostition loading rate (in mg m-2 Year-1).}
 \item{\code{Rainfall}}{ Annual accumulated rainfall estimate (m Year-1).}
 \item{\verb{ET Annual}}{ evapotranspiration estimate (m Year-1).}
-}}
+}
+}
 \source{
 \url{http://www.wwwalker.net/epgm/}
 }

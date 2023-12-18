@@ -154,7 +154,7 @@ EPGMTime=function(case.no=NA,
                                            PSettlingRate=Psettle.myr,
                                            P.AtmoDep=atmoP.mgm2yr,
                                            Rainfall=RF.myr,
-                                           ET=ET.myr,
+                                           ET=ET.myr,Max.Dist=maxdist.km,
                                            raw.output=T,results.table=F,plot.profile = F,Yr.Display =time[i])}
     else{tmp<-EPGMProfile(case.no=case.no,raw.output=T,results.table=F,plot.profile = F,Yr.Display =time[i])}
     tmp$time.step<-time[i]
